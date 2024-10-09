@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { Text } from 'react-native';
 import { Redirect, Tabs } from 'expo-router';
 

@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { View } from 'react-native';
-import { Button, Typo } from '../components/atoms';
+import { Button, Typo, Container } from '../components/atoms';
 
 import { useSession } from './ctx';
 
@@ -16,7 +16,9 @@ export default function Login() {
       >
         Sign In
       </Typo.Title>
-      <Button.ClassicButton></Button.ClassicButton>
+      <Button.ClassicButton backgroundColor={'red'}>
+        <Typo.Paragraph>Sign In</Typo.Paragraph>
+      </Button.ClassicButton>
     </View>
   );
 }

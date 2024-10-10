@@ -14,7 +14,7 @@ export default function Index() {
       >
         Sign Out (gros caca)
       </Text>
-      <Element.Deck title={'le titre'} />
+      <Element.Deck title={'le titre'} isEditable />
     </View>
   );
 }

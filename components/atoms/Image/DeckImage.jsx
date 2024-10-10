@@ -6,7 +6,8 @@ const StyledDeckImage = styled.Image`
   width: 24px;
   height: 24px;
   padding: 8px;
-  ${({ backgroundColorImage }) => (backgroundColorImage ? backgroundColorImage : colors.beige)}
+  background-color: ${({ backgroundColorImage }) =>
+    backgroundColorImage ? backgroundColorImage : colors.beige};
 `;
 
 const DeckImage = ({ backgroundColorImage, ...props }) => {

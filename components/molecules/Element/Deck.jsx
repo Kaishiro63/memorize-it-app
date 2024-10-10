@@ -18,7 +18,9 @@ const Deck = ({ deckSourceImage, title, isEditable, image, onPressEditable, ...p
     <StyledDeck {...props}>
       <Image.DeckImage source={deckSourceImage} />
       <Typo.SubTitle>{title}</Typo.SubTitle>
-      <Button.Base onPress={() => onPressEditable()}>{/* <Image.Base source={}/> */}</Button.Base>
+      {isEditable && (
+        <Image.Icon name='edit' size={24} color={colors.white} iconFamily={'MaterialIcons'} />
+      )}
     </StyledDeck>
   );
 };

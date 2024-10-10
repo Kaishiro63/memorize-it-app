@@ -9,10 +9,9 @@ const StyledClassicButton = styled.TouchableOpacity`
     height: 84px;
   `
       : `
-    border-radius: 12px;
+    border-radius: 16px;
     width: 100%;
     height: 60px;
-    
   `}
   background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
   display: flex;

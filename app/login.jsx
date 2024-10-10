@@ -1,21 +1,23 @@
 import { router } from 'expo-router';
-import { View } from 'react-native';
-import { Button, Typo, Container } from '../components/atoms';
-
+import { Typo, Button, Container } from '../components/atoms';
 import { useSession } from './ctx';
+import colors from '../utils/Colors';
 
 export default function Login() {
   const { login } = useSession();
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Typo.Title
+    <Container.ScreenBase centered>
+      <Typo.Title>Memorize It</Typo.Title>
+      <Button.ClassicButton
         onPress={() => {
           login('token');
           router.replace('/');
         }}
+        backgroundColor={colors.lightPurple}
       >
-        Sign In
-      </Typo.Title>
-    </View>
+        <Typo.Paragraph color={colors.white}>Se connecter</Typo.Paragraph>
+      </Button.ClassicButton>
+    </Container.ScreenBase>
   );
 }

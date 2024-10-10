@@ -5,7 +5,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const StyledIcon = styled.View``;
+const StyledIcon = styled.View`
+  ${({ containerStyle }) => containerStyle && containerStyle}
+`;
 
 const getIconFamily = (iconFamily) => {
   switch (iconFamily) {
@@ -20,10 +22,10 @@ const getIconFamily = (iconFamily) => {
   }
 };
 
-const Icon = ({ name, size, color, iconFamily, onPress }) => {
+const Icon = ({ name, size, color, iconFamily, onPress, containerStyle }) => {
   const Icon = getIconFamily(iconFamily);
   return (
-    <StyledIcon>
+    <StyledIcon containerStyle={containerStyle}>
       <Icon name={name} size={size} color={color} onPress={onPress} />
     </StyledIcon>
   );

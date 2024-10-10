@@ -4,11 +4,11 @@ import colors from '../../../utils/Colors';
 
 const StyledSubTitle = styled.Text`
   font-family: 'Poppins-SemiBold';
-  font-size: 24px;
-  color: ${({color}) => color || colors.darkPurple};
+  font-size: 16px;
+  color: ${({ color }) => color || colors.darkPurple};
 `;
 
-const SubTitle = ({color, ...props}) => {
+const SubTitle = ({ color, ...props }) => {
   return <StyledSubTitle color={color} {...props}></StyledSubTitle>;
 };
 

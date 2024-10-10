@@ -16,9 +16,6 @@ export default function Login() {
       >
         Sign In
       </Typo.Title>
-      <Button.ClassicButton backgroundColor={'red'}>
-        <Typo.Paragraph>Sign In</Typo.Paragraph>
-      </Button.ClassicButton>
     </View>
   );
 }

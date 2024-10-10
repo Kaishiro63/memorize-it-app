@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import colors from '../../../utils/Colors';
 
 const StyledTitle = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: 32;
+  color: ${({ color }) => color || colors.darkPurple};
 `;
 
-const Title = (props) => {
-  return <StyledTitle {...props}></StyledTitle>;
+const Title = ({ color, ...props }) => {
+  return <StyledTitle color={color} {...props}></StyledTitle>;
 };
 
 export default Title;

@@ -30,6 +30,7 @@ export default function AppLayout() {
       <Tabs.Screen
         name='index'
         options={{
+          headerShown: true,
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />

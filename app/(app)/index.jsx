@@ -13,18 +13,21 @@ export default function Index() {
       title: 'Seconde Guerre Mondiale',
       numberOfCards: 43,
       icon: 'book',
+      isEditable: true,
     },
     {
       id: 2,
       title: 'Bitcoin',
       numberOfCards: 34,
       icon: 'bitcoin',
+      isEditable: false,
     },
     {
       id: 3,
       title: "Vocabulaire d'anglais",
       numberOfCards: 27,
       icon: 'language',
+      isEditable: true,
     },
   ];
 

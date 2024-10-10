@@ -30,11 +30,11 @@ const Deck = ({
     <StyledDeck {...props}>
       <Container.BaseRow>
         <Image.Icon
-          containerStyle={`background-color: ${colors.beige}; padding: 20px; border-radius: 16px; margin-right: 20px`}
           name={deckIconName}
           size={28}
           color={colors.darkPurple}
           iconFamily={'FontAwesome'}
+          isPaddingIcon={true}
         />
         <Container.Base>
           <Typo.SubTitle>{title}</Typo.SubTitle>

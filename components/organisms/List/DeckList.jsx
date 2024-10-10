@@ -17,6 +17,7 @@ const DeckList = ({ data, ...props }) => {
           title={item.title}
           deckIconName={item.icon}
           numberOfCards={item.numberOfCards}
+          isEditable={item.isEditable}
         />
       )}
       keyExtractor={(item) => item.id}

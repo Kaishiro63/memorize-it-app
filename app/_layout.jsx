@@ -4,7 +4,7 @@ import { SessionProvider } from './ctx';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
-import PoppinsRegular from '../assets/fonts/Poppins-Bold.ttf';
+import PoppinsRegular from '../assets/fonts/Poppins-Regular.ttf';
 import PoppinsSemiBold from '../assets/fonts/Poppins-SemiBold.ttf';
 import PoppinsBold from '../assets/fonts/Poppins-Bold.ttf';
 import PoppinsExtraBold from '../assets/fonts/Poppins-ExtraBold.ttf';

@@ -1,13 +1,7 @@
-import { Text } from 'react-native';
-
-import { useSession } from '../ctx';
-import { Container } from '../../components/atoms';
-import { List } from '../../components/organisms';
+import { MyDeck } from '../../components/templates';
 
 export default function Index() {
-  const { signOut } = useSession();
-
-  const deckData = [
+  const decks = [
     {
       id: 1,
       title: 'Seconde Guerre Mondiale',
@@ -20,7 +14,7 @@ export default function Index() {
       title: 'Bitcoin',
       numberOfCards: 34,
       icon: 'bitcoin',
-      isEditable: false,
+      isEditable: true,
     },
     {
       id: 3,
@@ -29,19 +23,35 @@ export default function Index() {
       icon: 'language',
       isEditable: true,
     },
+    {
+      id: 4,
+      title: "Vocabulaire d'anglais",
+      numberOfCards: 27,
+      icon: 'language',
+      isEditable: true,
+    },
+    {
+      id: 5,
+      title: "Vocabulaire d'anglais",
+      numberOfCards: 27,
+      icon: 'language',
+      isEditable: true,
+    },
+    {
+      id: 6,
+      title: "Vocabulaire d'anglais",
+      numberOfCards: 27,
+      icon: 'language',
+      isEditable: true,
+    },
+    {
+      id: 7,
+      title: "Vocabulaire d'anglais",
+      numberOfCards: 27,
+      icon: 'language',
+      isEditable: true,
+    },
   ];
 
-  return (
-    <Container.ScreenBase centered isNotPadding>
-      <Text
-        onPress={() => {
-          signOut();
-        }}
-      >
-        Sign Out
-      </Text>
-
-      <List.DeckList data={deckData} />
-    </Container.ScreenBase>
-  );
+  return <MyDeck.Library onPressButton={() => console.log('CircleButton')} decks={decks} />;
 }

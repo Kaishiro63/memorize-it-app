@@ -1,12 +1,18 @@
 import styled from 'styled-components/native';
+import colors from '../../../utils/Colors';
 
 const StyledClassicButton = styled.TouchableOpacity`
   ${({ isRounded }) =>
     isRounded
       ? `
     border-radius: 50px;
-    width: 84px;
-    height: 84px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0px 0px 15px ${colors.black};
+    shadow-opacity: 0.3;
   `
       : `
     border-radius: 16px;
@@ -20,7 +26,14 @@ const StyledClassicButton = styled.TouchableOpacity`
 `;
 
 const ClassicButton = ({ backgroundColor, isRounded, ...props }) => {
-  return <StyledClassicButton backgroundColor={backgroundColor} isRounded={isRounded} {...props} />;
+  return (
+    <StyledClassicButton
+      activeOpacity={0.8}
+      backgroundColor={backgroundColor}
+      isRounded={isRounded}
+      {...props}
+    />
+  );
 };
 
 export default ClassicButton;

@@ -6,7 +6,7 @@ const StyledScreenBase = styled.View`
   ${({ isNotPadding }) => {
     return isNotPadding ? '' : 'padding: 0 20px;';
   }}
-  background-color: ${colors.beige};
+  background-color: ${colors.darkWhite};
   ${({ centered }) => {
     return centered && 'justify-content: center; align-items: center;';
   }}

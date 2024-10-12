@@ -3,10 +3,24 @@ import { Container } from '../../atoms';
 import { Button } from '../../molecules';
 import { List } from '../../organisms';
 
-const Library = ({ onPressButton, decks, ...props }) => {
+const Library = ({
+  onPressEditable,
+  onPressDeck,
+  onRefresh,
+  isRefreshing,
+  onPressButton,
+  decks,
+  ...props
+}) => {
   return (
     <Container.ScreenBase isNotPadding centered {...props}>
-      <List.DeckList data={decks} />
+      <List.DeckList
+        onPressEditable={(id) => onPressEditable(id)}
+        onPressDeck={(id) => onPressDeck(id)}
+        onRefresh={onRefresh}
+        isRefreshing={isRefreshing}
+        data={decks}
+      />
       <Button.CircleIconButton onPress={onPressButton} />
     </Container.ScreenBase>
   );

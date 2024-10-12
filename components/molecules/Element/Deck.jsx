@@ -44,7 +44,7 @@ const Deck = ({
 
       {isEditable && (
         <Image.Icon
-          onPress={() => console.log('icon')}
+          onPress={onPressEditable}
           name='edit'
           size={24}
           color={colors.lightPurple}

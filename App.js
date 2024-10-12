@@ -11,6 +11,7 @@ import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
 import PoppinsExtraBold from './assets/fonts/Poppins-ExtraBold.ttf';
 
 export default function App() {
+
   const [loaded, error] = useFonts({
     'Poppins-Regular': PoppinsRegular,
     'Poppins-SemiBold': PoppinsSemiBold,

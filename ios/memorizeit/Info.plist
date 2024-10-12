@@ -30,6 +30,12 @@
           <string>com.anonymous.memorizeit</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.1032648302065-ii5i7dq68u675n9tek5q8jm9fg9vpta3</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>

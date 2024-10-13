@@ -7,6 +7,7 @@ import Animated, {
   withSpring,
   interpolate,
   runOnJS,
+  withTiming,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
@@ -17,9 +18,11 @@ const StyledMemoryCard = styled(Animated.View)`
   width: 80%;
 `;
 
-const MemoryCard = ({ ...props }) => {
+const MemoryCard = ({ cards, ...props }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
+  const rotateY = useSharedValue(0);
 
   const onSwipeComplete = () => {
     console.log('Swipe complet !');
@@ -47,25 +50,35 @@ const MemoryCard = ({ ...props }) => {
       }
     });
 
+  const tap = Gesture.Tap().onStart(() => {
+    rotateY.value = withTiming(isFlipped ? 0 : 360, { duration: 300 });
+    runOnJS(setIsFlipped)(!isFlipped);
+  });
+
   const animatedStyle = useAnimatedStyle(() => {
     const rotateZ = interpolate(translateX.value, [-screenWidth, 0, screenWidth], [-15, 0, 15]);
+    const rotateYDeg = `${interpolate(rotateY.value, [0, 180], [0, 180])}deg`;
 
     return {
       transform: [
         { translateX: translateX.value },
         { translateY: translateY.value },
         { rotateZ: `${rotateZ}deg` },
+        { rotateY: rotateYDeg },
       ],
+      backfaceVisibility: 'hidden',
     };
   });
 
   return (
-    <GestureDetector gesture={gesture}>
-      <StyledMemoryCard style={animatedStyle}>
-        <Container.Card>
-          <Typo.SubTitle>Memory Card</Typo.SubTitle>
-        </Container.Card>
-      </StyledMemoryCard>
+    <GestureDetector gesture={tap}>
+      <GestureDetector gesture={gesture}>
+        <StyledMemoryCard style={animatedStyle}>
+          <Container.Card>
+            <Typo.SubTitle>{isFlipped ? 'answer' : 'question'}</Typo.SubTitle>
+          </Container.Card>
+        </StyledMemoryCard>
+      </GestureDetector>
     </GestureDetector>
   );
 };

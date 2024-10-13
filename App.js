@@ -1,8 +1,9 @@
+import Application from './app/Application';
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
-import Application from './app/Application';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
 
 import PoppinsRegular from './assets/fonts/Poppins-Regular.ttf';
@@ -31,7 +32,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Application />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Application />
+      </GestureHandlerRootView>
     </NavigationContainer>
   );
 }

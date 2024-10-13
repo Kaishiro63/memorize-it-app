@@ -1,10 +1,18 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { MemoryCard } from '../../../components/molecules/Element';
 
 const Game = ({ navigation, route }) => {
   return (
-    <View>
-      <Text>Game {route.params.id}</Text>
+    <View
+      style={{
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <MemoryCard />
     </View>
   );
 };

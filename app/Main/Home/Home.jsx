@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import { MyDeck } from '../../../components/templates';
 
 export default function Home({ navigation, route }) {
@@ -30,7 +31,21 @@ export default function Home({ navigation, route }) {
   };
 
   const onPressDeck = (id) => {
-    navigation.navigate('Game', { id });
+    Alert.alert(
+      'Confirmation',
+      'Es-tu prêt pour lancer la session ?',
+      [
+        {
+          text: 'Annuler',
+          style: 'cancel',
+        },
+        {
+          text: 'Oui',
+          onPress: () => navigation.navigate('Game', { id }),
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   return (

@@ -3,6 +3,7 @@ import colors from '../../utils/Colors';
 import * as Google from 'expo-auth-session/providers/google';
 import * as AuthSession from 'expo-auth-session';
 import { useEffect, useState } from 'react';
+import { View } from 'react-native';
 
 export default function Login({ navigation }) {
   const [userInfo, setUserInfo] = useState('');
@@ -38,15 +39,16 @@ export default function Login({ navigation }) {
   };
   return (
     <Container.ScreenBase centered>
-      <Button.ClassicButton onPress={() => promptAsync()} backgroundColor={colors.lightPurple}>
-        <Typo.SubTitle color={colors.white}>Google Auth</Typo.SubTitle>
-      </Button.ClassicButton>
       <Typo.Title>Memorize It</Typo.Title>
       <Button.ClassicButton
-        onPress={() => console.log('auth')}
+        onPress={() => navigation.navigate('MainStack')}
         backgroundColor={colors.lightPurple}
       >
         <Typo.SubTitle color={colors.white}>se connecter en tant que quentin</Typo.SubTitle>
+      </Button.ClassicButton>
+      <View style={{ marginVertical: 12 }} />
+      <Button.ClassicButton onPress={() => promptAsync()} backgroundColor={colors.lightPurple}>
+        <Typo.SubTitle color={colors.white}>Google Auth</Typo.SubTitle>
       </Button.ClassicButton>
     </Container.ScreenBase>
   );

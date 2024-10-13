@@ -12,7 +12,6 @@ const MainStack = () => {
         <Tabs.Navigator screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
                 let icon;
-
                 switch (route.name) {
                     case 'HomeStack':
                         icon = { name: focused ? 'home' : 'home-outline', family: 'Ionicons' }
@@ -36,7 +35,7 @@ const MainStack = () => {
             <Tabs.Screen
                 name='HomeStack'
                 component={HomeStack}
-                options={{ title: 'Home' }}
+                options={{ headerShown: false }}
             />
             <Tabs.Screen
                 name='ExplorerStack'

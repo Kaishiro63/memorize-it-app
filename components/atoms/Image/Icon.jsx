@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../../utils/Colors';
 
 const StyledIcon = styled.View`
+  ${({ isHeaderIcon }) => isHeaderIcon && `padding-left: 20px;`}
   ${({ containerStyle }) => containerStyle && containerStyle}
   ${({ isPaddingIcon }) =>
     isPaddingIcon &&
@@ -32,11 +33,29 @@ const getIconFamily = (iconFamily) => {
   }
 };
 
-const Icon = ({ name, size, color, iconFamily, onPress, containerStyle, isPaddingIcon }) => {
+const Icon = ({
+  name,
+  size,
+  color,
+  iconFamily,
+  onPress,
+  containerStyle,
+  isPaddingIcon,
+  isHeaderIcon,
+}) => {
   const Icon = getIconFamily(iconFamily);
   return (
-    <StyledIcon isPaddingIcon={isPaddingIcon} containerStyle={containerStyle}>
-      <Icon name={name} size={size} color={color} onPress={onPress} />
+    <StyledIcon
+      isHeaderIcon={isHeaderIcon}
+      isPaddingIcon={isPaddingIcon}
+      containerStyle={containerStyle}
+    >
+      <Icon
+        name={name}
+        size={size}
+        color={isHeaderIcon ? colors.darkPurple : color}
+        onPress={onPress}
+      />
     </StyledIcon>
   );
 };

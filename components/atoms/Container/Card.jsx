@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components/native';
 import colors from '../../../utils/Colors';
 
-const StyledCard = styled.TouchableOpacity`
+const StyledCard = styled.View`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: ${colors.white};
   border-radius: 16px;
-  height: 60%;
+  display: flex;
+  height: 80%;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Card = (props) => {

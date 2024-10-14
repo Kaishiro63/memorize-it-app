@@ -53,6 +53,7 @@ export default function Home({ navigation, route }) {
   return (
     <MyDeck.Library
       modalVisible={modalVisible}
+      onBackDropPress={() => setModalVisible(false)}
       onPressButton={() => setModalVisible(!modalVisible)}
       decks={decks}
       onPressEditable={onPressEditable}

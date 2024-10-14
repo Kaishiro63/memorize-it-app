@@ -1,33 +1,24 @@
 import React from 'react';
-import { Button, Typo, Input } from '../../atoms';
-import styled from 'styled-components/native';
+import { Container } from '../../atoms';
 import colors from '../../../utils/Colors';
-import { Image } from '../../atoms';
-import { View } from 'react-native-web';
 
-const ModalContent = styled.View`
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  align-items: center;
-`;
-
-const Modal = ({ setModalVisible, title }) => {
+const Modal = ({ modalVisible, onBackDropPress, ...props }) => {
   return (
-    <View></View>
-    // <ModalContent>
-    //   <Button onPress={() => setModalVisible(false)}>
-    //     <Image.Icon
-    //       name={'close'}
-    //       size={28}
-    //       color={colors.darkPurple}
-    //       iconFamily={'FontAwesome'}
-    //       isPaddingIcon={true}
-    //     />
-    //   </Button>
-    //   <Typo.SubTitle>{title}</Typo.SubTitle>
-    //   <Input.TextInput placeholder='Saisissez ici...' />
-    // </ModalContent>
+    <Container.ContainerModal onBackDropPress={onBackDropPress} modalVisible={modalVisible}>
+      <Container.Base
+        {...props}
+        containerStyle={`
+          background-color: ${colors.white};
+          border-radius: 16px;
+          width: 100%;
+          display: flex;
+          padding: 20px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      `}
+      ></Container.Base>
+    </Container.ContainerModal>
   );
 };
 

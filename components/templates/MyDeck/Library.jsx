@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from '../../atoms';
-import { Button, Element, ModalComponent } from '../../molecules';
+import { Container, Input, Typo } from '../../atoms';
+import { Button, Element } from '../../molecules';
 import { List } from '../../organisms';
 
 const Library = ({
@@ -11,11 +11,15 @@ const Library = ({
   onPressButton,
   decks,
   modalVisible,
-  setModalVisible,
+  onBackDropPress,
   ...props
 }) => {
   return (
     <Container.ScreenBase isNotPadding centered {...props}>
+      <Element.Modal onBackDropPress={onBackDropPress} modalVisible={modalVisible}>
+        <Typo.SubTitle>Modal</Typo.SubTitle>
+        <Input.TextInput placeholder='Input' />
+      </Element.Modal>
       <List.DeckList
         onPressEditable={(id) => onPressEditable(id)}
         onPressDeck={(id) => onPressDeck(id)}
@@ -23,12 +27,7 @@ const Library = ({
         isRefreshing={isRefreshing}
         data={decks}
       />
-      <Button.CircleIconButton onPress={() => onPressButton()} />
-      <Element.Modal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        title={'Créez votre deck'}
-      ></Element.Modal>
+      <Button.CircleIconButton onPress={() => onPressButton(true)} />
     </Container.ScreenBase>
   );
 };

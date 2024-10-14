@@ -3,6 +3,6 @@ import BaseRow from './BaseRow';
 import BaseFlex from './BaseFlex';
 import Card from './Card';
 import ScreenBase from './ScreenBase';
-import CustomModal from './CustomModal';
+import ContainerModal from './ContainerModal';
 
-export { Base, Card, ScreenBase, BaseRow, CustomModal, BaseFlex };
+export { Base, Card, ScreenBase, BaseRow, ContainerModal, BaseFlex };

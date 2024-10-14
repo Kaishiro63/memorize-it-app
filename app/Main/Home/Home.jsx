@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { MyDeck } from '../../../components/templates';
 
 export default function Home({ navigation, route }) {
+  const [modalVisible, setModalVisible] = useState(false);
   const decks = [
     {
       id: 1,
@@ -50,7 +52,8 @@ export default function Home({ navigation, route }) {
 
   return (
     <MyDeck.Library
-      onPressButton={() => console.log('CircleButton')}
+      modalVisible={modalVisible}
+      onPressButton={() => setModalVisible(!modalVisible)}
       decks={decks}
       onPressEditable={onPressEditable}
       onPressDeck={onPressDeck}

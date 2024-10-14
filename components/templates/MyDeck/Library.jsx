@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '../../atoms';
-import { Button } from '../../molecules';
+import { Button, Element, ModalComponent } from '../../molecules';
 import { List } from '../../organisms';
 
 const Library = ({
@@ -10,6 +10,8 @@ const Library = ({
   isRefreshing,
   onPressButton,
   decks,
+  modalVisible,
+  setModalVisible,
   ...props
 }) => {
   return (
@@ -21,7 +23,12 @@ const Library = ({
         isRefreshing={isRefreshing}
         data={decks}
       />
-      <Button.CircleIconButton onPress={onPressButton} />
+      <Button.CircleIconButton onPress={() => onPressButton()} />
+      <Element.Modal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        title={'Créez votre deck'}
+      ></Element.Modal>
     </Container.ScreenBase>
   );
 };

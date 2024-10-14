@@ -35,7 +35,7 @@ const MainStack = () => {
             <Tabs.Screen
                 name='HomeStack'
                 component={HomeStack}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, title: 'Home' }}
             />
             <Tabs.Screen
                 name='ExplorerStack'

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import { Container, Typo } from '../../atoms';
 import Animated, {
   useSharedValue,
@@ -10,7 +11,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import { Dimensions } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -18,7 +18,15 @@ const StyledMemoryCard = styled(Animated.View)`
   width: 80%;
 `;
 
-const MemoryCard = ({ cards, ...props }) => {
+const tab = [
+  { question: 'question1', answer: 'answer1' },
+  { question: 'question2', answer: 'answer2' },
+  { question: 'question3', answer: 'answer3' },
+  { question: 'question4', answer: 'answer4' },
+];
+
+const MemoryCard = ({ cards = tab }) => {
+  console.log(JSON.stringify(cards, null, 2));
   const [isFlipped, setIsFlipped] = useState(false);
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);

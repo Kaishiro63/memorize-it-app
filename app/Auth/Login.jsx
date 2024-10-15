@@ -1,49 +1,60 @@
 import { Typo, Container, Button } from '../../components/atoms';
 import colors from '../../utils/Colors';
-import * as Google from 'expo-auth-session/providers/google';
-import * as AuthSession from 'expo-auth-session';
-import { useEffect, useState } from 'react';
+// import * as Google from 'expo-auth-session/providers/google';
+import { useEffect } from 'react';
 import { View } from 'react-native';
+import { useLoginMutation } from '../../services/user';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/userSlice';
 
 export default function Login({ navigation }) {
-  const [userInfo, setUserInfo] = useState('');
+  const [postlogin, { data, isSuccess, error }] = useLoginMutation();
+  const dispatch = useDispatch();
 
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    iosClientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_IOS,
-    webClientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_WEB,
-  });
+  console.log(error);
+  const pressLogin = () => {
+    postlogin({ email: 'quentin@gmail.com', password: '123456' });
+  };
 
   useEffect(() => {
-    handleSignInWithGoogle();
-  }, [response]);
-
-  const handleSignInWithGoogle = async () => {
-    if (response?.type === 'success') {
-      await getUserInfo(response.authentication.accessToken);
+    if (isSuccess) {
+      console.log('success', JSON.stringify(data?.token?.token, null, 2));
+      dispatch(login(data.token.token));
+      // navigation.navigate('MainStack');
     }
-  };
+  }, [isSuccess]);
 
-  const getUserInfo = async (token) => {
-    try {
-      const response = await fetch('https://www.googleapis.com/userinfo/v2/me', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+  // const [userInfo, setUserInfo] = useState('');
+  // const [request, response, promptAsync] = Google.useAuthRequest({
+  //   iosClientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_IOS,
+  //   webClientId: process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID_WEB,
+  // });
 
-      const user = await response.json();
+  // useEffect(() => {
+  //   handleSignInWithGoogle();
+  // }, [response]);
 
-      console.log(user);
-      setUserInfo(user);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const handleSignInWithGoogle = async () => {
+  //   if (response?.type === 'success') {
+  //     await getUserInfo(response.authentication.accessToken);
+  //   }
+  // };
+
+  // const getUserInfo = async (token) => {
+  //   try {
+  //     const response = await fetch('https://www.googleapis.com/userinfo/v2/me', {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     const user = await response.json();
+  //     setUserInfo(user);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   return (
     <Container.ScreenBase centered>
       <Typo.Title>Memorize It</Typo.Title>
-      <Button.ClassicButton
-        onPress={() => navigation.navigate('MainStack')}
-        backgroundColor={colors.lightPurple}
-      >
+      <Button.ClassicButton onPress={() => pressLogin()} backgroundColor={colors.lightPurple}>
         <Typo.SubTitle color={colors.white}>se connecter en tant que quentin</Typo.SubTitle>
       </Button.ClassicButton>
       <View style={{ marginVertical: 12 }} />

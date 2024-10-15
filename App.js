@@ -11,8 +11,11 @@ import PoppinsSemiBold from './assets/fonts/Poppins-SemiBold.ttf';
 import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
 import PoppinsExtraBold from './assets/fonts/Poppins-ExtraBold.ttf';
 
-export default function App() {
+import { Provider } from 'react-redux';
+import { persistor, store } from './store/store';
+import { PersistGate } from 'redux-persist/integration/react'
 
+export default function App() {
   const [loaded, error] = useFonts({
     'Poppins-Regular': PoppinsRegular,
     'Poppins-SemiBold': PoppinsSemiBold,
@@ -32,8 +35,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
+
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Application />
+        <PersistGate loading={null} persistor={persistor}>
+          <Provider store={store}>
+            <Application />
+          </Provider>
+        </PersistGate>
       </GestureHandlerRootView>
     </NavigationContainer>
   );

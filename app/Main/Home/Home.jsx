@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { MyDeck } from '../../../components/templates';
+import { useGetAllDecksQuery } from '../../../services/deck';
 
 export default function Home({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const { data, error } = useGetAllDecksQuery();
+
+  console.log(JSON.stringify(data, null, 2));
+  console.log(JSON.stringify(error, null, 2));
+  
   const decks = [
     {
       id: 1,

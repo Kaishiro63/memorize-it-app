@@ -35,7 +35,6 @@ const MemoryCard = ({ cards = tab }) => {
   const onSwipeComplete = () => {
     console.log('Swipe complet !');
   };
-  F;
 
   const gesture = Gesture.Pan()
     .onChange((event) => {

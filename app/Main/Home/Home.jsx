@@ -5,34 +5,11 @@ import { useGetAllDecksQuery } from '../../../services/deck';
 
 export default function Home({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const { data, error } = useGetAllDecksQuery();
-  
+  const { data: decks, error } = useGetAllDecksQuery();
+  console.log(decks);
+
   const [dropdownValue, setDropdownValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
-
-  const decks = [
-    {
-      id: 1,
-      title: 'Seconde Guerre Mondiale',
-      numberOfCards: 43,
-      icon: 'book',
-      isEditable: true,
-    },
-    {
-      id: 2,
-      title: 'Bitcoin',
-      numberOfCards: 34,
-      icon: 'bitcoin',
-      isEditable: true,
-    },
-    {
-      id: 3,
-      title: "Vocabulaire d'anglais",
-      numberOfCards: 27,
-      icon: 'language',
-      isEditable: false,
-    },
-  ];
 
   const dropdownData = [
     { label: 'Maths', value: '1' },

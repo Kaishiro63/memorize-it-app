@@ -9,6 +9,7 @@ const StyledDeckList = styled.FlatList`
 `;
 
 const DeckList = ({ onPressEditable, onPressDeck, onRefresh, isRefreshing, data }) => {
+  console.log(JSON.stringify(data, null, 2));
   return (
     <StyledDeckList
       refreshControl={
@@ -18,9 +19,10 @@ const DeckList = ({ onPressEditable, onPressDeck, onRefresh, isRefreshing, data 
       renderItem={({ item }) => (
         <Element.Deck
           onPress={() => onPressDeck(item.id)}
-          title={item.title}
-          deckIconName={item.icon}
-          numberOfCards={item.numberOfCards}
+          title={item.name}
+          deckIconName={item.iconCategoryName}
+          deckFamilyIconName={item.iconCategoryFamily}
+          numberOfCards={item.cardCount}
           isEditable={item.isEditable}
           onPressEditable={() => onPressEditable(item.id)}
         />

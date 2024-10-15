@@ -19,13 +19,14 @@ const StyledDeck = styled.TouchableOpacity`
 const Deck = ({
   deckIconName,
   numberOfCards,
-  deckSourceImage,
   title,
   isEditable,
   image,
   onPressEditable,
+  deckFamilyIconName,
   ...props
 }) => {
+  console.log(deckFamilyIconName);
   return (
     <StyledDeck {...props}>
       <Container.BaseRow>
@@ -33,7 +34,7 @@ const Deck = ({
           name={deckIconName}
           size={28}
           color={colors.darkPurple}
-          iconFamily={'FontAwesome'}
+          iconFamily={deckFamilyIconName}
           isPaddingIcon={true}
         />
         <Container.Base>

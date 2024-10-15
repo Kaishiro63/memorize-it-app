@@ -32,3 +32,6 @@ export const store = configureStore({
 setupListeners(store.dispatch);
 
 export const persistor = persistStore(store);
+
+// Uncomment the line below to clear the persisted state
+persistor.purge();

@@ -13,14 +13,13 @@ export default function Login({ navigation }) {
 
   console.log(error);
   const pressLogin = () => {
-    postlogin({ email: 'quentin@gmail.com', password: '123456' });
+    postlogin({ email: 'user_prof@example.com', password: '123456' });
   };
 
   useEffect(() => {
     if (isSuccess) {
       console.log('success', JSON.stringify(data?.token?.token, null, 2));
       dispatch(login(data.token.token));
-      // navigation.navigate('MainStack');
     }
   }, [isSuccess]);
 

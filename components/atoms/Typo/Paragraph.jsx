@@ -4,8 +4,9 @@ import colors from '../../../utils/Colors';
 
 const StyledParagraph = styled.Text`
   font-family: 'Poppins-Regular';
-  font-size: 12px;
+  font-size: ${({ fontSize }) => fontSize || '12px'};
   color: ${({ color }) => color || colors.darkPurple};
+  font-family: ${({ fontFamily }) => fontFamily || 'Poppins-Regular'};
 `;
 
 const Paragraph = ({ color, ...props }) => {

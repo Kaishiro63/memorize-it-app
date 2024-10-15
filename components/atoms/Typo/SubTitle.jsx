@@ -4,7 +4,7 @@ import colors from '../../../utils/Colors';
 
 const StyledSubTitle = styled.Text`
   font-family: 'Poppins-SemiBold';
-  font-size: 16px;
+  font-size: ${({ fontSize }) => fontSize || '16px'};
   color: ${({ color }) => color || colors.darkPurple};
 `;
 

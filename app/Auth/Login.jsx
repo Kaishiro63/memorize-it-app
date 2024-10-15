@@ -1,4 +1,4 @@
-import { Typo, Container, Button } from '../../components/atoms';
+import { Typo, Container, ContainerButton } from '../../components/atoms';
 import colors from '../../utils/Colors';
 // import * as Google from 'expo-auth-session/providers/google';
 import { useEffect } from 'react';
@@ -53,13 +53,19 @@ export default function Login({ navigation }) {
   return (
     <Container.ScreenBase centered>
       <Typo.Title>Memorize It</Typo.Title>
-      <Button.ClassicButton onPress={() => pressLogin()} backgroundColor={colors.lightPurple}>
-        <Typo.SubTitle color={colors.white}>se connecter en tant que quentin</Typo.SubTitle>
-      </Button.ClassicButton>
+      <ContainerButton.ClassicButton
+        onPress={() => pressLogin()}
+        backgroundColor={colors.lightPurple}
+      >
+        <Typo.SubTitle color={colors.white}>Connexion VIP</Typo.SubTitle>
+      </ContainerButton.ClassicButton>
       <View style={{ marginVertical: 12 }} />
-      <Button.ClassicButton onPress={() => promptAsync()} backgroundColor={colors.lightPurple}>
+      <ContainerButton.ClassicButton
+        onPress={() => promptAsync()}
+        backgroundColor={colors.lightPurple}
+      >
         <Typo.SubTitle color={colors.white}>Google Auth</Typo.SubTitle>
-      </Button.ClassicButton>
+      </ContainerButton.ClassicButton>
     </Container.ScreenBase>
   );
 }

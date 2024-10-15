@@ -6,10 +6,11 @@ const StyledInput = styled.TextInput`
   font-family: 'Poppins-Regular';
   font-size: 16px;
   color: ${colors.black};
-  border-radius: 16px;
-  border: 1px solid ${colors.black};
+  border-width: 0.5px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
   padding: 8px;
-  height: 36px;
+  height: 45px;
   width: 100%;
 `;
 

@@ -29,7 +29,7 @@ const MainStack = () => {
             tabBarActiveTintColor: colors.orange,
             tabBarInactiveTintColor: 'gray',
             tabBarStyle: {
-                ...tabBarVisibility(route)
+                ...tabBarVisibility(route),
             }
         })}>
             <Tabs.Screen

@@ -12,10 +12,16 @@ const StyledDropdown = styled(Dropdown)`
   padding: 8px;
 `;
 
-const DropdownComponent = ({ dropdownData, isFocus, dropdownValue, ...props }) => {
+const DropdownComponent = ({
+  dropdownData,
+  isFocus,
+  dropdownValue,
+  setIsFocus,
+  setDropDownvalue,
+}) => {
+  
   return (
     <StyledDropdown
-      {...props}
       data={dropdownData}
       isFocus={isFocus}
       placeholder={!isFocus ? 'Catégorie' : '...'}
@@ -26,7 +32,8 @@ const DropdownComponent = ({ dropdownData, isFocus, dropdownValue, ...props }) =
       onFocus={() => setIsFocus(true)}
       onBlur={() => setIsFocus(false)}
       onChange={(item) => {
-        setValue(item.value);
+        console.log(item)
+        setDropDownvalue(item);
         setIsFocus(false);
       }}
       containerStyle={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}

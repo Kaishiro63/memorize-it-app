@@ -6,10 +6,7 @@ import { useGetAllDecksQuery } from '../../../services/deck';
 export default function Home({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false);
   const { data, error } = useGetAllDecksQuery();
-
-  console.log(JSON.stringify(data, null, 2));
-  console.log(JSON.stringify(error, null, 2));
-
+  
   const [dropdownValue, setDropdownValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -75,6 +72,8 @@ export default function Home({ navigation, route }) {
       dropdownData={dropdownData}
       modalVisible={modalVisible}
       isFocus={isFocus}
+      setDropdownValue={(value) => setDropdownValue(value)}
+      setIsFocus={(value) => setIsFocus(value)}
       dropdownValue={dropdownValue}
       onBackDropPress={() => setModalVisible(false)}
       onPressButton={() => setModalVisible(!modalVisible)}

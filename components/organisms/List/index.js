@@ -1,3 +1,4 @@
 import DeckList from './DeckList';
+import EditCardList from './EditCardList';
 
-export { DeckList };
+export { DeckList, EditCardList };

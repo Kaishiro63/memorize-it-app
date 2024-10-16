@@ -11,6 +11,9 @@ const StyledScreenBase = styled.View`
   ${({ centered }) => {
     return centered && 'justify-content: center; align-items: center;';
   }}
+  ${({ centeredTop }) => {
+    return centeredTop && 'justify-content: start; align-items: center;';
+  }}
   ${({ containerStyle }) => containerStyle && containerStyle};
 `;
 

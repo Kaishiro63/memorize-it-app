@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Container, Typo } from '../../../components/atoms';
 
 const Edition = ({ navigation, route }) => {
   return (
-    <View>
-      <Text>Edition {route.params.id}</Text>
-    </View>
+    <Container.ScreenBase isNotPadding centered>
+      <Typo.SubTitle>{route.params.id}</Typo.SubTitle>
+    </Container.ScreenBase>
   );
 };
 

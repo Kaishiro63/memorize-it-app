@@ -9,11 +9,10 @@ const StyledDeckList = styled.FlatList`
 `;
 
 const DeckList = ({ onPressEditable, onPressDeck, onRefresh, isRefreshing, data }) => {
-  console.log(JSON.stringify(data, null, 2));
   return (
     <StyledDeckList
       refreshControl={
-        <Native.RefreshControl onRefresh={() => onRefresh()} refreshing={isRefreshing} size={24} />
+        <Native.RefreshControl onRefresh={onRefresh} refreshing={isRefreshing} size={24} />
       }
       data={data}
       renderItem={({ item }) => (

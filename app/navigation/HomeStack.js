@@ -9,9 +9,9 @@ const HomeStack = () => {
     const HomeStack = createStackNavigator()
     return (
         <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-            <HomeStack.Screen name='Home' options={HeaderOptions({ title: 'Mes Decks' })} component={Home} />
+            <HomeStack.Screen name='Home' options={HeaderOptions({ title: 'Mes Decks', isNotHeaderLeft: true })} component={Home} />
             <HomeStack.Screen name='Game' component={Game} />
-            <HomeStack.Screen name='Edition' component={Edition} />
+            <HomeStack.Screen name='Edition' options={HeaderOptions({})} component={Edition} />
         </HomeStack.Navigator>
     )
 }

@@ -14,6 +14,7 @@ const HeaderOptions = ({
   headerLeft,
   gestureEnabled = true,
   backNavigation,
+  isNotHeaderLeft = false,
 }) => {
   const navigation = useNavigation();
   return {
@@ -25,15 +26,16 @@ const HeaderOptions = ({
     headerTransparent: !backgroundColor,
     // headerRight,
     headerLeft:
-      headerLeft ||
-      (() => (
-        <Image.Icon
-          onPress={() => backNavigation || navigation.goBack()}
-          isHeaderIcon
-          name={'arrowleft'}
-          size={24}
-        />
-      )),
+      !isNotHeaderLeft &&
+      (headerLeft ||
+        (() => (
+          <Image.Icon
+            onPress={() => backNavigation || navigation.goBack()}
+            isHeaderIcon
+            name={'arrowleft'}
+            size={24}
+          />
+        ))),
     gestureEnabled,
     headerTitleAlign: 'center',
   };

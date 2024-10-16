@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 const StyledRefreshControl = styled.RefreshControl``;
 
-const RefreshControl = (...props) => {
+const RefreshControl = ({ ...props }) => {
   return <StyledRefreshControl {...props} />;
 };
 

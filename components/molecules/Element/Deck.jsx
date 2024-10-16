@@ -26,7 +26,6 @@ const Deck = ({
   deckFamilyIconName,
   ...props
 }) => {
-  console.log(deckFamilyIconName);
   return (
     <StyledDeck {...props}>
       <Container.BaseRow>

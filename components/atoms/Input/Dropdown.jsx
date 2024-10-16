@@ -14,12 +14,11 @@ const StyledDropdown = styled(Dropdown)`
 
 const DropdownComponent = ({
   dropdownData,
-  isFocus,
   dropdownValue,
-  setIsFocus,
   setDropDownvalue,
 }) => {
-  
+  const [isFocus, setIsFocus] = useState(false);
+
   return (
     <StyledDropdown
       data={dropdownData}
@@ -32,7 +31,6 @@ const DropdownComponent = ({
       onFocus={() => setIsFocus(true)}
       onBlur={() => setIsFocus(false)}
       onChange={(item) => {
-        console.log(item)
         setDropDownvalue(item);
         setIsFocus(false);
       }}

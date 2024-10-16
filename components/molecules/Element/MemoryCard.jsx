@@ -26,7 +26,6 @@ const tab = [
 ];
 
 const MemoryCard = ({ cards = tab }) => {
-  console.log(JSON.stringify(cards, null, 2));
   const [isFlipped, setIsFlipped] = useState(false);
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);

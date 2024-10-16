@@ -5,6 +5,11 @@ import { List } from '../../organisms';
 import colors from '../../../utils/Colors';
 
 const Library = ({
+  refreshDeckList,
+  decksLoading,
+  inputValue,
+  createDeck,
+  setInputValue,
   dropdownData,
   dropdownValue,
   isFocus,
@@ -36,16 +41,21 @@ const Library = ({
       `}
         />
         <Typo.SubTitle fontSize={'20px'}>Créez votre deck</Typo.SubTitle>
-        <Input.TextInput placeholder='Saisissez votre titre' />
+        <Input.TextInput
+          onChangeText={(e) => setInputValue(e)}
+          value={inputValue}
+          placeholder='Saisissez votre titre'
+        />
         <Input.Dropdown
           setDropDownvalue={(value) => setDropdownValue(value)}
-          setIsFocus={(value) => setIsFocus(value)}
           dropdownData={dropdownData}
-          isFocus={isFocus}
           dropdownValue={dropdownValue}
         />
 
-        <ContainerButton.ClassicButton backgroundColor={colors.lightPurple}>
+        <ContainerButton.ClassicButton
+          onPress={() => createDeck()}
+          backgroundColor={colors.lightPurple}
+        >
           <Typo.Paragraph color={colors.white} fontSize={'18px'} fontFamily={'Poppins-Bold'}>
             Créer
           </Typo.Paragraph>
@@ -55,8 +65,8 @@ const Library = ({
         setIsFocus={(value) => setIsFocus(value)}
         onPressEditable={(id) => onPressEditable(id)}
         onPressDeck={(id) => onPressDeck(id)}
-        onRefresh={onRefresh}
-        isRefreshing={isRefreshing}
+        onRefresh={() => refreshDeckList()}
+        isRefreshing={decksLoading}
         data={decks}
       />
       <Button.CircleIconButton onPress={() => onPressButton(true)} />

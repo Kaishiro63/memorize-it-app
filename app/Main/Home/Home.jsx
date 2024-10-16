@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { MyDeck } from '../../../components/templates';
-import { useGetAllDecksQuery } from '../../../services/deck';
+import {
+  useCreateDeckMutation,
+  useGetAllCategoriesQuery,
+  useGetAllDecksQuery,
+} from '../../../services/deck';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Home({ navigation, route }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const { data: decks, error } = useGetAllDecksQuery();
-  console.log(decks);
-
   const [dropdownValue, setDropdownValue] = useState(null);
-  const [isFocus, setIsFocus] = useState(false);
+  const [title, setTitle] = useState('');
+  const isFocused = useIsFocused();
 
-  const dropdownData = [
-    { label: 'Maths', value: '1' },
-    { label: 'Histoire', value: '2' },
-    { label: 'Géo', value: '3' },
-    { label: 'Football', value: '4' },
-    { label: 'Jeux Vidéos', value: '5' },
-    { label: 'Tennis', value: '6' },
-    { label: 'Japonnais', value: '7' },
-    { label: 'Anglais', value: '8' },
-  ];
+  const { data: decks, refetch: decksRefetch, isLoading: decksLoading } = useGetAllDecksQuery();
+  const [createDeck, { data, isSuccess }] = useCreateDeckMutation();
+  const { data: categories } = useGetAllCategoriesQuery();
+
+  useEffect(() => {
+    decksRefetch();
+  }, [isFocused]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigation.navigate('Edition', { id: data.id });
+      setModalVisible(false);
+      setTitle('');
+    }
+  }, [isSuccess]);
 
   const onPressEditable = (id) => {
     navigation.navigate('Edition', { id });
@@ -46,11 +54,18 @@ export default function Home({ navigation, route }) {
 
   return (
     <MyDeck.Library
-      dropdownData={dropdownData}
+      decksLoading={decksLoading}
+      refreshDeckList={decksRefetch}
+      createDeck={() => {
+        createDeck({ title, categoryId: dropdownValue.value });
+      }}
+      inputValue={title}
+      setInputValue={(value) => setTitle(value)}
+      dropdownData={categories}
       modalVisible={modalVisible}
-      isFocus={isFocus}
-      setDropdownValue={(value) => setDropdownValue(value)}
-      setIsFocus={(value) => setIsFocus(value)}
+      setDropdownValue={(value) => {
+        setDropdownValue(value);
+      }}
       dropdownValue={dropdownValue}
       onBackDropPress={() => setModalVisible(false)}
       onPressButton={() => setModalVisible(!modalVisible)}

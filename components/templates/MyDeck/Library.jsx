@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Input, Typo, ContainerButton } from '../../atoms';
+import { Container, Input, Typo, ContainerButton } from '../../atoms';
 import { Button, Element } from '../../molecules';
 import { List } from '../../organisms';
 import colors from '../../../utils/Colors';
@@ -28,18 +28,6 @@ const Library = ({
   return (
     <Container.ScreenBase isNotPadding centered {...props}>
       <Element.Modal onBackDropPress={onBackDropPress} modalVisible={modalVisible}>
-        <Image.Icon
-          onPress={onBackDropPress}
-          name='close'
-          size={24}
-          color={colors.lightPurple}
-          iconFamily={'MaterialIcons'}
-          containerStyle={`
-          position: absolute;
-          top: 8px;
-          right: 8px;
-      `}
-        />
         <Typo.SubTitle fontSize={'20px'}>Créez votre deck</Typo.SubTitle>
         <Input.TextInput
           onChangeText={(e) => setInputValue(e)}
@@ -51,7 +39,6 @@ const Library = ({
           dropdownData={dropdownData}
           dropdownValue={dropdownValue}
         />
-
         <ContainerButton.ClassicButton
           onPress={() => createDeck()}
           backgroundColor={colors.lightPurple}

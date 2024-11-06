@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container } from '../../atoms';
-import { Button } from '../../molecules';
+import { Container, Input, Typo, ContainerButton } from '../../atoms';
+import { Button, Element } from '../../molecules';
 import { List } from '../../organisms';
+import colors from '../../../utils/Colors';
 
 const Edit = ({
   refreshCardList,
@@ -10,20 +11,47 @@ const Edit = ({
   onRefresh,
   isRefreshing,
   cards,
+  inputValueQuestion,
+  inputValueResponse,
+  createCard,
+  setInputValueQuestion,
+  setInputValueResponse,
+  onPressButton,
+  modalVisible,
+  onBackDropPress,
   ...props
 }) => {
   return (
-    <Container.BaseFlex>
-      <Container.BaseRow isNotPadding centered {...props}>
-        <List.EditCardList
-          onPressCard={(id) => onPressCard(id)}
-          onRefresh={() => refreshCardList()}
-          isRefreshing={cardLoading}
-          data={cards}
-        ></List.EditCardList>
-      </Container.BaseRow>
-      <Button.CircleIconButton />
-    </Container.BaseFlex>
+    <Container.ScreenBase centeredTop>
+      <List.EditCardList
+        onPressCard={(id) => onPressCard(id)}
+        onRefresh={() => refreshCardList()}
+        isRefreshing={cardLoading}
+        data={cards}
+      ></List.EditCardList>
+      <Element.Modal onBackDropPress={onBackDropPress} modalVisible={modalVisible}>
+        <Typo.SubTitle fontSize={'20px'}>Ajoutez une carte</Typo.SubTitle>
+        <Input.TextInput
+          onChangeText={(e) => setInputValueQuestion(e)}
+          value={inputValueQuestion}
+          placeholder='Question'
+        />
+        <Input.TextInput
+          onChangeText={(e) => setInputValueResponse(e)}
+          value={inputValueResponse}
+          placeholder='Réponse'
+        />
+        <ContainerButton.ClassicButton
+          onPress={() => createCard()}
+          backgroundColor={colors.lightPurple}
+        >
+          <Typo.Paragraph color={colors.white} fontSize={'18px'} fontFamily={'Poppins-Bold'}>
+            Créer
+          </Typo.Paragraph>
+        </ContainerButton.ClassicButton>
+      </Element.Modal>
+      <Button.CircleIconButton onPress={() => onPressButton(true)} />
+    </Container.ScreenBase>
   );
 };
 

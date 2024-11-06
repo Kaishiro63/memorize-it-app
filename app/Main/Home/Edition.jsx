@@ -1,9 +1,12 @@
-import React from 'react';
-import { Container } from '../../../components/atoms';
+import React, { useEffect, useState } from 'react';
 import { MyDeck } from '../../../components/templates';
-import { useGetAllCardByDeckIdQuery } from '../../../services/card';
+import { useGetAllCardByDeckIdQuery, useCreateCardMutation } from '../../../services/card';
 
 const Edition = ({ navigation, route }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [question, setQuestion] = useState('');
+  const [response, setResponse] = useState('');
+
   const {
     data: cardInfo,
     error,
@@ -11,20 +14,39 @@ const Edition = ({ navigation, route }) => {
     isLoading: cardLoading,
   } = useGetAllCardByDeckIdQuery({ deckId: route.params.id });
 
-  console.log(cardInfo?.cards);
+  const [createCard, { isSuccess }] = useCreateCardMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      setModalVisible(false);
+      setQuestion('');
+      setResponse('');
+      cardRefetch();
+    }
+  }, [isSuccess, cardRefetch]);
 
   const onPressCard = () => {
     navigation.navigate();
   };
+
   return (
-    <Container.ScreenBase centeredTop>
-      <MyDeck.Edit
-        cardLoading={cardLoading}
-        refreshCardList={cardRefetch}
-        cards={cardInfo?.cards}
-        onPressCard={onPressCard}
-      ></MyDeck.Edit>
-    </Container.ScreenBase>
+    <MyDeck.Edit
+      cardLoading={cardLoading}
+      refreshCardList={cardRefetch}
+      onRefresh={cardRefetch}
+      cards={cardInfo?.cards}
+      onPressCard={onPressCard}
+      createCard={() => {
+        createCard({ question, response, deckId: route.params.id });
+      }}
+      inputValueQuestion={question}
+      setInputValueQuestion={(value) => setQuestion(value)}
+      inputValueResponse={response}
+      setInputValueResponse={(value) => setResponse(value)}
+      modalVisible={modalVisible}
+      onBackDropPress={() => setModalVisible(false)}
+      onPressButton={() => setModalVisible(!modalVisible)}
+    />
   );
 };
 

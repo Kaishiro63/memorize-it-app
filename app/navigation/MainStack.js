@@ -39,7 +39,7 @@ const MainStack = () => {
         component={HomeStack}
         options={{ headerShown: false, title: 'Home' }}
       />
-      <Tabs.Screen name='ExplorerStack' component={ExplorerStack} options={{ title: 'Explorer' }} />
+      <Tabs.Screen name='ExplorerStack' component={ExplorerStack} options={{ headerShown: false, title: 'Home' }} />
     </Tabs.Navigator>
   );
 };

@@ -35,7 +35,6 @@ const StyledClassicButton = styled.TouchableOpacity`
 
 const ClassicButton = ({ backgroundColor, isRounded, absoluteBottom, ...props }) => {
   const bottom = useHeaderHeight();
-  console.log(bottom);
   return (
     <StyledClassicButton
       safePaddingBottom={bottom + 20}

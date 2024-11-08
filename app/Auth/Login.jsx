@@ -13,7 +13,7 @@ export default function Login({ navigation }) {
 
   console.log(error);
   const pressLogin = () => {
-    postlogin({ email: 'user_prof@example.com', password: '123456' });
+    postlogin({ email: 'quentin@gmail.com', password: '123456' });
   };
 
   useEffect(() => {
@@ -59,7 +59,6 @@ export default function Login({ navigation }) {
       >
         <Typo.SubTitle color={colors.white}>Connexion VIP</Typo.SubTitle>
       </ContainerButton.ClassicButton>
-      <View style={{ marginVertical: 12 }} />
       <ContainerButton.ClassicButton
         onPress={() => promptAsync()}
         backgroundColor={colors.lightPurple}

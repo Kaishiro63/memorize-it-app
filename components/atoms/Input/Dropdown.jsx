@@ -12,16 +12,21 @@ const StyledDropdown = styled(Dropdown)`
   padding: 8px;
 `;
 
-const DropdownComponent = ({
-  dropdownData,
-  dropdownValue,
-  setDropDownvalue,
-}) => {
+const DropdownComponent = ({ dropdownData, dropdownValue, setDropDownvalue }) => {
   const [isFocus, setIsFocus] = useState(false);
+
+  console.log(dropdownData);
+
+  const formattedData = dropdownData.map((element) => {
+    return {
+      label: element.name,
+      value: element.id,
+    };
+  });
 
   return (
     <StyledDropdown
-      data={dropdownData}
+      data={formattedData}
       isFocus={isFocus}
       placeholder={!isFocus ? 'Catégorie' : '...'}
       value={dropdownValue}

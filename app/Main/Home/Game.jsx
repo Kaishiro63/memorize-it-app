@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { MemoryCard } from '../../../components/molecules/Element';
-import { useGetAllCardByDeckIdQuery } from '../../../services/card';
+import { useGetRandomCardByDeckIdQuery } from '../../../services/card';
 import { Container, ContainerButton, Typo } from '../../../components/atoms';
 import colors from '../../../utils/Colors';
 
 const Game = ({ navigation, route }) => {
-  const { data, error, isLoading } = useGetAllCardByDeckIdQuery({ deckId: route.params.id });
+  const { data, error, isLoading } = useGetRandomCardByDeckIdQuery({ deckId: route.params.id });
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -20,15 +20,13 @@ const Game = ({ navigation, route }) => {
   return (
     <Container.ScreenBase centered>
       <Typo.SubTitle>
-        {currentIndex < data?.cards.length
-          ? `Carte ${currentIndex + 1} sur ${data?.cards.length}`
-          : ''}
+        {currentIndex < data?.length ? `Carte ${currentIndex + 1} sur ${data?.length}` : ''}
       </Typo.SubTitle>
 
-      {data && Array.isArray(data.cards) && currentIndex < data.cards.length ? (
+      {data && Array.isArray(data) && currentIndex < data.length ? (
         <MemoryCard
-          key={data.cards[currentIndex].id}
-          card={data.cards[currentIndex]}
+          key={data[currentIndex].id}
+          card={data[currentIndex]}
           onSwipeComplete={handleSwipeComplete}
         />
       ) : (

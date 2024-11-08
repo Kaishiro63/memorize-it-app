@@ -8,6 +8,12 @@ export const cardApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
+    getRandomCardByDeckId: builder.query({
+      query: ({ deckId }) => ({
+        url: `/game/random/${deckId}`,
+        method: 'GET',
+      }),
+    }),
     createCard: builder.mutation({
       query: ({ question, response, deckId }) => ({
         url: `/cards`,
@@ -22,4 +28,5 @@ export const cardApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetAllCardByDeckIdQuery, useCreateCardMutation } = cardApi;
+export const { useGetAllCardByDeckIdQuery, useGetRandomCardByDeckIdQuery, useCreateCardMutation } =
+  cardApi;

@@ -33,16 +33,14 @@ const MemoryCard = ({ card, onSwipeComplete }) => {
       const shouldBeDismissed = Math.abs(translateX.value) > screenWidth * 0.4;
 
       if (shouldBeDismissed) {
-        // Accélère la disparition de la carte
         translateX.value = withTiming(
           translateX.value > 0 ? screenWidth + 100 : -screenWidth - 100,
-          { duration: 300 }, // Plus rapide que withSpring
+          { duration: 300 },
           () => {
             runOnJS(onSwipeComplete)();
           }
         );
       } else {
-        // Réinitialisation rapide de la carte si elle n'est pas swipeée
         translateX.value = withSpring(0, { damping: 20, stiffness: 150 });
         translateY.value = withSpring(0, { damping: 20, stiffness: 150 });
       }

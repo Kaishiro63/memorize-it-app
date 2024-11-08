@@ -5,9 +5,9 @@ import { Container, Typo } from '../../atoms';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withSpring,
   interpolate,
   runOnJS,
+  withSpring,
   withTiming,
 } from 'react-native-reanimated';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -18,22 +18,11 @@ const StyledMemoryCard = styled(Animated.View)`
   width: 80%;
 `;
 
-const tab = [
-  { question: 'question1', answer: 'answer1' },
-  { question: 'question2', answer: 'answer2' },
-  { question: 'question3', answer: 'answer3' },
-  { question: 'question4', answer: 'answer4' },
-];
-
-const MemoryCard = ({ cards = tab }) => {
+const MemoryCard = ({ card, onSwipeComplete }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
   const rotateY = useSharedValue(0);
-
-  const onSwipeComplete = () => {
-    console.log('Swipe complet !');
-  };
 
   const gesture = Gesture.Pan()
     .onChange((event) => {
@@ -44,16 +33,18 @@ const MemoryCard = ({ cards = tab }) => {
       const shouldBeDismissed = Math.abs(translateX.value) > screenWidth * 0.4;
 
       if (shouldBeDismissed) {
-        translateX.value = withSpring(
+        // Accélère la disparition de la carte
+        translateX.value = withTiming(
           translateX.value > 0 ? screenWidth + 100 : -screenWidth - 100,
-          {},
+          { duration: 300 }, // Plus rapide que withSpring
           () => {
             runOnJS(onSwipeComplete)();
           }
         );
       } else {
-        translateX.value = withSpring(0);
-        translateY.value = withSpring(0);
+        // Réinitialisation rapide de la carte si elle n'est pas swipeée
+        translateX.value = withSpring(0, { damping: 20, stiffness: 150 });
+        translateY.value = withSpring(0, { damping: 20, stiffness: 150 });
       }
     });
 
@@ -82,7 +73,7 @@ const MemoryCard = ({ cards = tab }) => {
       <GestureDetector gesture={gesture}>
         <StyledMemoryCard style={animatedStyle}>
           <Container.Card>
-            <Typo.SubTitle>{isFlipped ? 'answer' : 'question'}</Typo.SubTitle>
+            <Typo.SubTitle>{isFlipped ? card.answer : card.question}</Typo.SubTitle>
           </Container.Card>
         </StyledMemoryCard>
       </GestureDetector>

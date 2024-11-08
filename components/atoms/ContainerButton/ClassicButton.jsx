@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import colors from '../../../utils/Colors';
+import { useHeaderHeight } from '@react-navigation/elements';
 
 const StyledClassicButton = styled.TouchableOpacity`
   ${({ isRounded }) =>
@@ -20,18 +21,28 @@ const StyledClassicButton = styled.TouchableOpacity`
     height: 50px;
     margin: 10px 0;
   `}
+  ${({ absoluteBottom, safePaddingBottom }) =>
+    absoluteBottom &&
+    `
+    position: absolute;
+    bottom: ${safePaddingBottom};
+  `}
   background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const ClassicButton = ({ backgroundColor, isRounded, ...props }) => {
+const ClassicButton = ({ backgroundColor, isRounded, absoluteBottom, ...props }) => {
+  const bottom = useHeaderHeight();
+  console.log(bottom);
   return (
     <StyledClassicButton
+      safePaddingBottom={bottom + 20}
       activeOpacity={0.8}
       backgroundColor={backgroundColor}
       isRounded={isRounded}
+      absoluteBottom={absoluteBottom}
       {...props}
     />
   );

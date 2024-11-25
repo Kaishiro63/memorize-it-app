@@ -13,7 +13,7 @@ const ExplorerList = ({ onPressEditable, onPressDeck, data }) => {
         <Element.Explorer
           onPress={() => onPressDeck(item.id)}
           title={item.name}
-          image={item.iconCategoryName}
+          categoryId={item.categoryId}
           deckFamilyIconName={item.iconCategoryFamily}
           numberOfCards={item.cardCount}
           isEditable={item.isEditable}

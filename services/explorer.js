@@ -8,7 +8,17 @@ export const explorerApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
+    getExplorerDecksByCategory: builder.query({
+      query: (categoryId) => ({
+        url: `/explorer/all/${categoryId}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetExplorerDecksQuery } = explorerApi;
+export const {
+  useGetExplorerDecksQuery,
+  useGetExplorerDecksByCategoryQuery,
+  useLazyGetExplorerDecksQuery,
+} = explorerApi;

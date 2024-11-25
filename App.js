@@ -2,6 +2,8 @@ import Application from './app/Application';
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 
+import { StripeProvider } from '@stripe/stripe-react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
@@ -13,7 +15,7 @@ import PoppinsExtraBold from './assets/fonts/Poppins-ExtraBold.ttf';
 
 import { Provider } from 'react-redux';
 import { persistor, store } from './store/store';
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from 'redux-persist/integration/react';
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -34,15 +36,20 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Provider store={store}>
-            <Application />
-          </Provider>
-        </PersistGate>
-      </GestureHandlerRootView>
-    </NavigationContainer>
+    <StripeProvider
+    // publishableKey={publishableKey}
+    // merchantIdentifier='merchant.identifier'
+    // urlScheme='your-url-scheme'
+    >
+      <NavigationContainer>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Provider store={store}>
+              <Application />
+            </Provider>
+          </PersistGate>
+        </GestureHandlerRootView>
+      </NavigationContainer>
+    </StripeProvider>
   );
 }

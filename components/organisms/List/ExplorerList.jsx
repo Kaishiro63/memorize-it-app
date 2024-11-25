@@ -1,23 +1,23 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Element } from '../../molecules';
+import { useNavigation } from '@react-navigation/native';
 
 const StyledExplorerList = styled.FlatList``;
 
-const ExplorerList = ({ onPressEditable, onPressDeck, data }) => {
+const ExplorerList = ({ data }) => {
+  const navigation = useNavigation();
   return (
     <StyledExplorerList
       data={data}
       numColumns={2}
       renderItem={({ item }) => (
         <Element.Explorer
-          onPress={() => onPressDeck(item.id)}
+          onPress={() => navigation.navigate('Detail', { deck: item })}
           title={item.name}
           categoryId={item.categoryId}
           deckFamilyIconName={item.iconCategoryFamily}
           numberOfCards={item.cardCount}
-          isEditable={item.isEditable}
-          onPressEditable={() => onPressEditable(item.id)}
         />
       )}
       keyExtractor={(item) => item.id}

@@ -14,6 +14,13 @@ export const explorerApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
+    checkoutDeck: builder.mutation({
+      query: ({ deckId }) => ({
+        url: '/explorer/checkout',
+        method: 'POST',
+        body: { deckId },
+      }),
+    }),
   }),
 });
 
@@ -21,4 +28,5 @@ export const {
   useGetExplorerDecksQuery,
   useGetExplorerDecksByCategoryQuery,
   useLazyGetExplorerDecksQuery,
+  useCheckoutDeckMutation,
 } = explorerApi;

@@ -13,8 +13,6 @@ const List = ({ route }) => {
     trigger(selectedCategory);
   }, [selectedCategory]);
 
-  console.log(selectedCategory);
-
   const handleSelectCategory = (id) => {
     if (selectedCategory === id) {
       setSelectedCategory(undefined);

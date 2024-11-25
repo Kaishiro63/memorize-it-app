@@ -3,6 +3,7 @@ import { Container } from '../../../components/atoms';
 import { List as ListComponents } from '../../../components/organisms';
 import { useGetAllCategoriesQuery } from '../../../services/deck';
 import { useGetExplorerDecksQuery } from '../../../services/explorer';
+import { ExplorerList } from '../../../components/organisms/List';
 
 const List = ({ route }) => {
   const [selectedCategory, setSelectedCategory] = useState(undefined);
@@ -19,13 +20,14 @@ const List = ({ route }) => {
   };
 
   return (
-    <Container.BaseFlex isNotPadding>
+    <Container.ScreenBase>
       <ListComponents.CategoryList
         activeCategoryId={selectedCategory}
         onPressCategory={(id) => handleSelectCategory(id)}
         data={data}
       />
-    </Container.BaseFlex>
+      <ExplorerList data={explorerDecks} />
+    </Container.ScreenBase>
   );
 };
 

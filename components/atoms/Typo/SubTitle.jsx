@@ -9,8 +9,8 @@ const StyledSubTitle = styled.Text`
   text-align: ${({ textAlign }) => textAlign || 'left'};
 `;
 
-const SubTitle = ({ color, ...props }) => {
-  return <StyledSubTitle color={color} {...props}></StyledSubTitle>;
+const SubTitle = ({ textAlign, color, ...props }) => {
+  return <StyledSubTitle textAlign={textAlign} color={color} {...props}></StyledSubTitle>;
 };
 
 export default SubTitle;

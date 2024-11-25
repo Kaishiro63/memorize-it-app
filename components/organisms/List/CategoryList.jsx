@@ -2,11 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../../molecules';
 
-const StyledCategoryList = styled.FlatList.attrs(() => ({
-  contentContainerStyle: {
-    paddingLeft: 16,
-  },
-}))``;
+const StyledCategoryList = styled.FlatList`
+  padding: 8px 0 24px 0;
+`;
 const CategoryList = ({ data, onPressCategory, activeCategoryId }) => {
   return (
     <StyledCategoryList

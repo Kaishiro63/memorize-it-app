@@ -4,7 +4,6 @@ import { Container, Image, Typo } from '../../atoms';
 import colors from '../../../utils/Colors';
 
 const StyledDeck = styled.TouchableOpacity`
-  height: 1O0px;
   width: 100%;
   border-radius: 16px;
   padding: 10px;

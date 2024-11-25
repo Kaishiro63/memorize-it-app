@@ -8,6 +8,7 @@ const ExplorerList = ({ onPressEditable, onPressDeck, data }) => {
   return (
     <StyledExplorerList
       data={data}
+      showsVerticalScrollIndicator={false}
       numColumns={2}
       renderItem={({ item }) => (
         <Element.Explorer

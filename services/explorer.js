@@ -19,9 +19,4 @@ export const explorerApi = api.injectEndpoints({
   }),
 });
 
-export const {
-  useGetExplorerDecksQuery,
-  useGetExplorerDecksByCategoryQuery,
-  useLazyGetExplorerDecksQuery,
-  useCheckoutDeckMutation,
-} = explorerApi;
+export const { useLazyGetExplorerDecksByCategoryQuery, useCheckoutDeckMutation } = explorerApi;

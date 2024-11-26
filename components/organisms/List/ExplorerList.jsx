@@ -7,6 +7,7 @@ const StyledExplorerList = styled.FlatList``;
 
 const ExplorerList = ({ data }) => {
   const navigation = useNavigation();
+  console.log(JSON.stringify(data, null, 2));
   return (
     <StyledExplorerList
       data={data}
@@ -17,6 +18,7 @@ const ExplorerList = ({ data }) => {
           onPress={() => navigation.navigate('Detail', { deck: item })}
           title={item.name}
           categoryId={item.categoryId}
+          price={item.price}
           deckFamilyIconName={item.iconCategoryFamily}
           numberOfCards={item.cardCount}
         />

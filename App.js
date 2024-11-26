@@ -2,8 +2,6 @@ import Application from './app/Application';
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 
-import { StripeProvider } from '@stripe/stripe-react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
@@ -36,20 +34,14 @@ export default function App() {
   }
 
   return (
-    <StripeProvider
-    // publishableKey={publishableKey}
-    // merchantIdentifier='merchant.identifier'
-    // urlScheme='your-url-scheme'
-    >
-      <NavigationContainer>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <PersistGate loading={null} persistor={persistor}>
-            <Provider store={store}>
-              <Application />
-            </Provider>
-          </PersistGate>
-        </GestureHandlerRootView>
-      </NavigationContainer>
-    </StripeProvider>
+    <NavigationContainer>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Provider store={store}>
+            <Application />
+          </Provider>
+        </PersistGate>
+      </GestureHandlerRootView>
+    </NavigationContainer>
   );
 }

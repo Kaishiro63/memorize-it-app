@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useStripe } from '@stripe/stripe-react-native';
-import { useCheckoutDeckMutation } from '../../../services/explorer';
+import { useCheckoutDeckMutation } from '../../../services/stripe';
 import { Container, Typo, Image, ContainerButton } from '../../../components/atoms';
 import colors from '../../../utils/Colors';
+import { current } from '@reduxjs/toolkit';
 
 const categoryImages = {
   1: require('../../../assets/images/1.png'),
@@ -36,6 +37,8 @@ const Detail = ({ route, navigation }) => {
       const { paymentIntent, ephemeralKey, customer } = await checkoutDeck({
         deckId: deck.id,
       }).unwrap();
+
+      console.log(paymentIntent, ephemeralKey, customer);
 
       const initResponse = await initPaymentSheet({
         paymentIntentClientSecret: paymentIntent,

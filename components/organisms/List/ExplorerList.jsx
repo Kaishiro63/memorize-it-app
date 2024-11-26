@@ -10,6 +10,7 @@ const ExplorerList = ({ data }) => {
   return (
     <StyledExplorerList
       data={data}
+      showsVerticalScrollIndicator={false}
       numColumns={2}
       renderItem={({ item }) => (
         <Element.Explorer

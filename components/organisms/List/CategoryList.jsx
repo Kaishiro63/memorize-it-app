@@ -9,6 +9,7 @@ const CategoryList = ({ data, onPressCategory, activeCategoryId }) => {
   return (
     <StyledCategoryList
       data={data}
+      showsHorizontalScrollIndicator={false}
       horizontal
       renderItem={({ item }) => {
         return (

@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Container } from '../../../components/atoms';
 import { List as ListComponents } from '../../../components/organisms';
 import { useGetAllCategoriesQuery } from '../../../services/deck';
-import { useLazyGetExplorerDecksQuery } from '../../../services/explorer';
+import { useLazyGetExplorerDecksByCategoryQuery } from '../../../services/explorer';
 import { ExplorerList } from '../../../components/organisms/List';
 
 const List = ({ route }) => {
   const [selectedCategory, setSelectedCategory] = useState(undefined);
   const { data } = useGetAllCategoriesQuery();
-  const [trigger, { data: explorerDecks, error, isLoading }] = useLazyGetExplorerDecksQuery();
+  const [trigger, { data: explorerDecks, error, isLoading, isSuccess }] =
+    useLazyGetExplorerDecksByCategoryQuery();
+
   useEffect(() => {
-    trigger(selectedCategory);
+    trigger(selectedCategory && { categoryId: selectedCategory });
   }, [selectedCategory]);
 
   const handleSelectCategory = (id) => {

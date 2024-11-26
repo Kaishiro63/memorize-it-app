@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStripe } from '@stripe/stripe-react-native';
 import { useCheckoutDeckMutation } from '../../../services/stripe';
 import { Container, Typo, Image, ContainerButton } from '../../../components/atoms';
@@ -25,25 +25,29 @@ const Detail = ({ route, navigation }) => {
   const { deck } = route.params;
   const categoryImage = categoryImages[deck.categoryId];
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
-  const [checkoutDeck, { data, error }] = useCheckoutDeckMutation();
+  const [checkoutDeck, { data, isSuccess }] = useCheckoutDeckMutation();
   const [loading, setLoading] = useState(false);
 
-  console.log(JSON.stringify(error));
+  useEffect(() => {
+    if (isSuccess) {
+      handleOpenPayement();
+    }
+  }, [isSuccess]);
 
-  const handlePurchase = async () => {
+  const handlePurchase = () => {
+    checkoutDeck({
+      deckId: deck.id,
+    });
+  };
+
+  const handleOpenPayement = async () => {
     setLoading(true);
 
     try {
-      const { paymentIntent, ephemeralKey, customer } = await checkoutDeck({
-        deckId: deck.id,
-      }).unwrap();
-
-      console.log(paymentIntent, ephemeralKey, customer);
-
       const initResponse = await initPaymentSheet({
-        paymentIntentClientSecret: paymentIntent,
-        customerEphemeralKeySecret: ephemeralKey,
-        customerId: customer,
+        paymentIntentClientSecret: data.paymentIntent,
+        customerEphemeralKeySecret: data.ephemeralKey,
+        customerId: data.customer,
       });
 
       if (initResponse.error) {

@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import colors from '../../../utils/Colors';
 
 const StyledDeckImage = styled.Image`
   width: 24px;
   height: 24px;
   padding: 8px;
-  background-color: ${({ backgroundColorImage }) =>
-    backgroundColorImage ? backgroundColorImage : colors.beige};
+  background-color: ${({ theme, backgroundColorImage }) =>
+    backgroundColorImage ? backgroundColorImage : theme.beige};
 `;
 
 const DeckImage = ({ backgroundColorImage, ...props }) => {

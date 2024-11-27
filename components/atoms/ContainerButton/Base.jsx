@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import colors from '../../../utils/Colors';
 
 const StyledBase = styled.TouchableOpacity`
-  ${({ isCategoryButton }) =>
+  ${({ isCategoryButton, theme }) =>
     isCategoryButton &&
     `
-    background-color: ${colors.white};
+    background-color: ${theme.white};
     border-radius: 50px;
     padding-left: 15px;
     padding-right: 15px;

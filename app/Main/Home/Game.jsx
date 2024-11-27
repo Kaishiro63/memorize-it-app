@@ -35,9 +35,9 @@ const Game = ({ navigation, route }) => {
       <ContainerButton.ClassicButton
         onPress={handleFinishSession}
         absoluteBottom
-        backgroundColor={colors.lightPurple}
+        backgroundColor={({ theme }) => theme.lightPurple}
       >
-        <Typo.SubTitle color={colors.white}>Finir la scéance</Typo.SubTitle>
+        <Typo.SubTitle color={({ theme }) => theme.white}>Finir la scéance</Typo.SubTitle>
       </ContainerButton.ClassicButton>
     </Container.ScreenBase>
   );

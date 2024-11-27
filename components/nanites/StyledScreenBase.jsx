@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import colors from '../../utils/Colors';
 
 const StyledScreenBase = styled.View`
   flex: 1;
@@ -7,7 +6,7 @@ const StyledScreenBase = styled.View`
     return isNotPadding ? '' : 'padding: 0 20px;';
   }}
   ${({ safePaddingTop }) => `padding-top: ${safePaddingTop}px;`}
-  background-color: ${colors.darkWhite};
+  backgroundColor: ${({ theme }) => theme.darkWhite};
   ${({ centered }) => {
     return centered && 'justify-content: center; align-items: center;';
   }}

@@ -9,7 +9,7 @@ const StyledCard = styled.TouchableOpacity`
   border-radius: 16px;
   padding: 8px;
   margin: 9px;
-  background-color: ${colors.white};
+  background-color: ${({ theme }) => theme.white};
 `;
 
 const Card = ({ title, onPressEditable, ...props }) => {

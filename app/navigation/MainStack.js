@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import colors from '../../utils/Colors';
+import { useTheme } from 'styled-components'; // Importer useTheme
 import HomeStack from './HomeStack';
 import ExplorerStack from './ExplorerStack';
 import { Icon } from '../../components/atoms/Image';
@@ -8,6 +8,8 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const MainStack = () => {
   const Tabs = createBottomTabNavigator();
+  const theme = useTheme();
+
   return (
     <Tabs.Navigator
       screenOptions={({ route }) => ({
@@ -27,9 +29,11 @@ const MainStack = () => {
 
           return <Icon iconFamily={icon.family} name={icon.name} size={28} color={color} />;
         },
-        tabBarActiveTintColor: colors.orange,
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: theme.orange || colors.orange,
+        tabBarInactiveTintColor: theme.inactiveColor || 'gray',
         tabBarStyle: {
+          backgroundColor: theme.white || 'white',
+          borderTopWidth: 0,
           ...tabBarVisibility(route),
         },
       })}
@@ -39,7 +43,11 @@ const MainStack = () => {
         component={HomeStack}
         options={{ headerShown: false, title: 'Home' }}
       />
-      <Tabs.Screen name='ExplorerStack' component={ExplorerStack} options={{ headerShown: false, title: 'Home' }} />
+      <Tabs.Screen
+        name='ExplorerStack'
+        component={ExplorerStack}
+        options={{ headerShown: false, title: 'Explorer' }}
+      />
     </Tabs.Navigator>
   );
 };

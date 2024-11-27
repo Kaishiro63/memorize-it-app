@@ -27,7 +27,8 @@ const StyledClassicButton = styled.TouchableOpacity`
     position: absolute;
     bottom: ${safePaddingBottom};
   `}
-  background-color: ${({ backgroundColor }) => backgroundColor || 'white'};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor ? backgroundColor : theme.darkPurple};
   display: flex;
   justify-content: center;
   align-items: center;

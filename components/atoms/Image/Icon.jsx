@@ -6,14 +6,20 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import colors from '../../../utils/Colors';
 
 const StyledIcon = styled.View`
   ${({ isHeaderIcon }) => isHeaderIcon && `padding-left: 20px;`}
   ${({ containerStyle }) => containerStyle && containerStyle}
-  ${({ isPaddingIcon }) =>
+  ${({ isPaddingIcon, theme }) =>
     isPaddingIcon &&
-    `background-color: ${colors.beige}; width: 60px; aspect-ratio: 1; border-radius: 16px; margin-right: 20px; display: flex; align-items: center; justify-content: center;`}
+    `background-color: ${theme.beige};
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;`}
 `;
 
 const getIconFamily = (iconFamily) => {
@@ -53,7 +59,7 @@ const Icon = ({
       <Icon
         name={name}
         size={size}
-        color={isHeaderIcon ? colors.darkPurple : color}
+        color={isHeaderIcon ? ({ theme }) => theme.darkPurple : color}
         onPress={onPress}
       />
     </StyledIcon>

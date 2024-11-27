@@ -1,16 +1,19 @@
 import React from 'react';
-import colors from '../../../utils/Colors';
 import { ContainerButton, Image } from '../../atoms';
 
 const CircleIconButton = ({ ...props }) => {
   return (
-    <ContainerButton.ClassicButton {...props} isRounded backgroundColor={colors.lightPurple}>
+    <ContainerButton.ClassicButton
+      {...props}
+      isRounded
+      backgroundColor={({ theme }) => theme.lightPurple}
+    >
       <Image.Icon
-        name={'add'}
+        name='add'
         size={36}
-        color={colors.darkWhite}
-        iconFamily={'MaterialIcons'}
-      ></Image.Icon>
+        color={({ theme }) => theme.darkWhite}
+        iconFamily='MaterialIcons'
+      />
     </ContainerButton.ClassicButton>
   );
 };

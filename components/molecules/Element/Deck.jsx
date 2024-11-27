@@ -11,7 +11,7 @@ const StyledDeck = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: ${colors.white};
+  background-color: ${({ theme }) => theme.white};
   margin: 10px 0;
 `;
 
@@ -31,7 +31,7 @@ const Deck = ({
         <Image.Icon
           name={deckIconName}
           size={28}
-          color={colors.darkPurple}
+          color={({ theme }) => theme.darkPurple}
           iconFamily={deckFamilyIconName}
           isPaddingIcon={true}
         />
@@ -46,7 +46,7 @@ const Deck = ({
           onPress={onPressEditable}
           name='edit'
           size={24}
-          color={colors.lightPurple}
+          color={({ theme }) => theme.lightPurple}
           iconFamily={'MaterialIcons'}
         />
       )}

@@ -7,7 +7,7 @@ const StyledExplorerList = styled.FlatList``;
 
 const ExplorerList = ({ data }) => {
   const navigation = useNavigation();
-  console.log(JSON.stringify(data, null, 2));
+
   return (
     <StyledExplorerList
       data={data}

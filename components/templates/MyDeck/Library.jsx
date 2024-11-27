@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Input, Typo, ContainerButton } from '../../atoms';
 import { Button, Element } from '../../molecules';
 import { List } from '../../organisms';
-import colors from '../../../utils/Colors';
+import { SwitchButton } from '../../molecules/Button';
 
 const Library = ({
   refreshDeckList,
@@ -27,6 +27,7 @@ const Library = ({
 }) => {
   return (
     <Container.ScreenBase isNotPadding centered {...props}>
+      <SwitchButton />
       <Element.Modal onBackDropPress={onBackDropPress} modalVisible={modalVisible}>
         <Typo.SubTitle fontSize={'20px'}>Créez votre deck</Typo.SubTitle>
         <Input.TextInput
@@ -41,9 +42,13 @@ const Library = ({
         />
         <ContainerButton.ClassicButton
           onPress={() => createDeck()}
-          backgroundColor={colors.lightPurple}
+          backgroundColor={({ theme }) => theme.lightPurple}
         >
-          <Typo.Paragraph color={colors.white} fontSize={'18px'} fontFamily={'Poppins-Bold'}>
+          <Typo.Paragraph
+            color={({ theme }) => theme.white}
+            fontSize={'18px'}
+            fontFamily={'Poppins-Bold'}
+          >
             Créer
           </Typo.Paragraph>
         </ContainerButton.ClassicButton>

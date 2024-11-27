@@ -6,7 +6,7 @@ import colors from '../../../utils/Colors';
 const StyledBaseFlex = styled.View`
   flex: 1;
   width: 100%;
-  background-color: ${colors.darkWhite};
+  background-color: ${({ theme }) => theme.darkWhite};
   padding-top: ${({ safePaddingTop }) => safePaddingTop}px;
 `;
 const BaseFlex = ({ ...props }) => {

@@ -2,6 +2,8 @@ import Application from './app/Application';
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 
+import { ThemeContextProvider } from './provider/ThemeContext.js';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
@@ -38,7 +40,9 @@ export default function App() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <PersistGate loading={null} persistor={persistor}>
           <Provider store={store}>
-            <Application />
+            <ThemeContextProvider>
+              <Application />
+            </ThemeContextProvider>
           </Provider>
         </PersistGate>
       </GestureHandlerRootView>

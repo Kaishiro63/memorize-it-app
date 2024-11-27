@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Input, Typo, ContainerButton } from '../../atoms';
 import { Button, Element } from '../../molecules';
 import { List } from '../../organisms';
-import colors from '../../../utils/Colors';
 
 const Edit = ({
   refreshCardList,
@@ -29,6 +28,7 @@ const Edit = ({
         isRefreshing={cardLoading}
         data={cards}
       ></List.EditCardList>
+
       <Element.Modal onBackDropPress={onBackDropPress} modalVisible={modalVisible}>
         <Typo.SubTitle fontSize={'20px'}>Ajoutez une carte</Typo.SubTitle>
         <Input.TextInput
@@ -43,13 +43,18 @@ const Edit = ({
         />
         <ContainerButton.ClassicButton
           onPress={() => createCard()}
-          backgroundColor={colors.lightPurple}
+          backgroundColor={({ theme }) => theme.lightPurple}
         >
-          <Typo.Paragraph color={colors.white} fontSize={'18px'} fontFamily={'Poppins-Bold'}>
+          <Typo.Paragraph
+            color={({ theme }) => theme.white}
+            fontSize={'18px'}
+            fontFamily={'Poppins-Bold'}
+          >
             Créer
           </Typo.Paragraph>
         </ContainerButton.ClassicButton>
       </Element.Modal>
+
       <Button.CircleIconButton onPress={() => onPressButton(true)} />
     </Container.ScreenBase>
   );

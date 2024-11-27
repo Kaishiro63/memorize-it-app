@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Typo, Image, Container } from '../../atoms';
-import colors from '../../../utils/Colors';
 
 // Dictionnaire qui mappe categoryId à un chemin d'image
 const categoryImages = {
@@ -24,7 +23,7 @@ const StyledExplorer = styled.TouchableOpacity`
   width: 48%;
   border-radius: 16px;
   padding: 10px;
-  background-color: ${colors.white};
+  background-color: ${({ theme }) => theme.white};
   margin-bottom: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
@@ -40,14 +39,14 @@ const Explorer = ({ title, description, price, onPress, categoryId, ...props }) 
         <Typo.Paragraph numberOfLines={2}>{description}</Typo.Paragraph>
 
         <Container.Base
-          containerStyle={{
+          containerStyle={({ theme }) => ({
             padding: 5,
-            backgroundColor: colors.lightPurple,
+            backgroundColor: theme.lightPurple,
             borderRadius: 8,
             alignSelf: 'flex-end',
-          }}
+          })}
         >
-          <Typo.SubTitle textAlign={'right'} color={colors.white}>
+          <Typo.SubTitle textAlign={'right'} color={({ theme }) => theme.white}>
             {price} €
           </Typo.SubTitle>
         </Container.Base>

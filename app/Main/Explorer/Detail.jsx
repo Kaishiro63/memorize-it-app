@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { useStripe } from '@stripe/stripe-react-native';
 import { useCheckoutDeckMutation } from '../../../services/stripe';
 import { Container, Typo, Image, ContainerButton } from '../../../components/atoms';
 import colors from '../../../utils/Colors';
-import { current } from '@reduxjs/toolkit';
+import { Alert, TouchableOpacity } from 'react-native'; // Importer TouchableOpacity pour la flèche de retour
+import { Ionicons } from '@expo/vector-icons'; // Importer les icônes pour la flèche
 
 const categoryImages = {
   1: require('../../../assets/images/1.png'),
@@ -69,6 +70,16 @@ const Detail = ({ route, navigation }) => {
     }
   };
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons name='arrow-back' size={24} color={colors.primary} style={{ marginLeft: 10 }} />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <Container.ScreenBase>
       <Image.ImageExplorer source={categoryImage} />
@@ -76,14 +87,16 @@ const Detail = ({ route, navigation }) => {
       <Typo.Title>{deck.name}</Typo.Title>
       <Typo.Paragraph>{deck.description}</Typo.Paragraph>
 
-      <Typo.SubTitle color={colors.dark}>{deck.price} €</Typo.SubTitle>
+      <Typo.SubTitle color={({ theme }) => theme.dark}>{deck.price} €</Typo.SubTitle>
 
       <ContainerButton.ClassicButton
-        backgroundColor={loading ? colors.black : colors.lightPurple}
+        backgroundColor={({ theme }) => (loading ? theme.black : theme.lightPurple)}
         onPress={handlePurchase}
         disabled={loading}
       >
-        <Typo.SubTitle color={colors.white}>{loading ? 'Traitement...' : 'Acheter'}</Typo.SubTitle>
+        <Typo.SubTitle color={({ theme }) => theme.white}>
+          {loading ? 'Traitement...' : 'Acheter'}
+        </Typo.SubTitle>
       </ContainerButton.ClassicButton>
     </Container.ScreenBase>
   );

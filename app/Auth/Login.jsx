@@ -26,15 +26,15 @@ export default function Login({ navigation }) {
       <Typo.Title>Memorize It</Typo.Title>
       <ContainerButton.ClassicButton
         onPress={() => pressLogin()}
-        backgroundColor={colors.lightPurple}
+        backgroundColor={({ theme }) => theme.lightPurple}
       >
-        <Typo.SubTitle color={colors.white}>Connexion VIP</Typo.SubTitle>
+        <Typo.SubTitle>Connexion VIP</Typo.SubTitle>
       </ContainerButton.ClassicButton>
       <ContainerButton.ClassicButton
         onPress={() => promptAsync()}
-        backgroundColor={colors.lightPurple}
+        backgroundColor={({ theme }) => theme.lightPurple}
       >
-        <Typo.SubTitle color={colors.white}>Google Auth</Typo.SubTitle>
+        <Typo.SubTitle>Google Auth</Typo.SubTitle>
       </ContainerButton.ClassicButton>
     </Container.ScreenBase>
   );

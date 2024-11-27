@@ -5,7 +5,7 @@ import colors from '../../../utils/Colors';
 const StyledInput = styled.TextInput`
   font-family: 'Poppins-Regular';
   font-size: 16px;
-  color: ${colors.black};
+  color: ${({ theme }) => theme.black};
   border-width: 0.5px;
   border-radius: 8px;
   border: 0.5px solid rgba(0, 0, 0, 0.2);

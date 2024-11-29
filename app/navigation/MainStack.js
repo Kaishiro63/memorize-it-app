@@ -5,6 +5,7 @@ import HomeStack from './HomeStack';
 import ExplorerStack from './ExplorerStack';
 import { Icon } from '../../components/atoms/Image';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import ProfilStack from './ProfilStack';
 
 const MainStack = () => {
   const Tabs = createBottomTabNavigator();
@@ -21,6 +22,9 @@ const MainStack = () => {
               break;
             case 'ExplorerStack':
               icon = { name: focused ? 'book' : 'book-outline', family: 'Ionicons' };
+              break;
+            case 'ProfilStack':
+              icon = { name: focused ? 'profil' : 'profil', family: 'Ionicons' };
               break;
             default:
               icon = 'home';
@@ -46,6 +50,11 @@ const MainStack = () => {
       <Tabs.Screen
         name='ExplorerStack'
         component={ExplorerStack}
+        options={{ headerShown: false, title: 'Explorer' }}
+      />
+      <Tabs.Screen
+        name='ProfilStack'
+        component={ProfilStack}
         options={{ headerShown: false, title: 'Explorer' }}
       />
     </Tabs.Navigator>

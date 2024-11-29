@@ -34,8 +34,6 @@ const Detail = ({ route, navigation }) => {
   const [checkoutDeck, { data, isSuccess }] = useCheckoutDeckMutation();
   const [loading, setLoading] = useState(false);
 
-  console.log(deck);
-
   useEffect(() => {
     if (isSuccess) {
       handleOpenPayement();

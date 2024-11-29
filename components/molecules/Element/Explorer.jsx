@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Typo, Image, Container } from '../../atoms';
 
-// Dictionnaire qui mappe categoryId à un chemin d'image
 const categoryImages = {
   1: require('../../../assets/images/1.png'),
   2: require('../../../assets/images/2.png'),
@@ -21,11 +20,22 @@ const categoryImages = {
 
 const StyledExplorer = styled.TouchableOpacity`
   width: 48%;
+  height: 250px;
   border-radius: 16px;
   padding: 10px;
   background-color: ${({ theme }) => theme.white};
   margin-bottom: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+`;
+
+const PriceContainer = styled.View`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px;
+  background-color: ${({ theme }) => theme.lightPurple};
+  border-radius: 8px;
 `;
 
 const Explorer = ({ title, description, price, onPress, categoryId, ...props }) => {
@@ -37,20 +47,12 @@ const Explorer = ({ title, description, price, onPress, categoryId, ...props }) 
       <Container.Base containerStyle={{ padding: 10 }}>
         <Typo.SubTitle>{title}</Typo.SubTitle>
         <Typo.Paragraph numberOfLines={2}>{description}</Typo.Paragraph>
-
-        <Container.Base
-          containerStyle={({ theme }) => ({
-            padding: 5,
-            backgroundColor: theme.lightPurple,
-            borderRadius: 8,
-            alignSelf: 'flex-end',
-          })}
-        >
-          <Typo.SubTitle textAlign={'right'} color={({ theme }) => theme.white}>
-            {price} €
-          </Typo.SubTitle>
-        </Container.Base>
       </Container.Base>
+      <PriceContainer>
+        <Typo.SubTitle textAlign={'right'} color={({ theme }) => theme.white}>
+          {price} €
+        </Typo.SubTitle>
+      </PriceContainer>
     </StyledExplorer>
   );
 };

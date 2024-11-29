@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { useStripe } from '@stripe/stripe-react-native';
 import { useCheckoutDeckMutation } from '../../../services/stripe';
+import { useGetExplorerDecksIdQuery } from '../../../services/explorer';
 import { Container, Typo, Image, ContainerButton } from '../../../components/atoms';
 import colors from '../../../utils/Colors';
-import { Alert, TouchableOpacity } from 'react-native'; // Importer TouchableOpacity pour la flèche de retour
-import { Ionicons } from '@expo/vector-icons'; // Importer les icônes pour la flèche
+import { TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const categoryImages = {
   1: require('../../../assets/images/1.png'),
@@ -23,11 +24,17 @@ const categoryImages = {
 };
 
 const Detail = ({ route, navigation }) => {
-  const { deck } = route.params;
-  const categoryImage = categoryImages[deck.categoryId];
+  const {
+    data: deck,
+    error,
+    isLoading,
+  } = useGetExplorerDecksIdQuery({ deckId: route.params.deckId });
+  const categoryImage = categoryImages[deck?.category.id];
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [checkoutDeck, { data, isSuccess }] = useCheckoutDeckMutation();
   const [loading, setLoading] = useState(false);
+
+  console.log(deck);
 
   useEffect(() => {
     if (isSuccess) {
@@ -61,7 +68,7 @@ const Detail = ({ route, navigation }) => {
       if (paymentResponse.error) {
         console.error('Erreur de paiement:', paymentResponse.error);
       } else {
-        console.log('Paiement réussi !');
+        navigation.navigate('Home');
       }
     } catch (error) {
       console.error('Erreur lors du processus de paiement:', error);
@@ -84,10 +91,14 @@ const Detail = ({ route, navigation }) => {
     <Container.ScreenBase>
       <Image.ImageExplorer source={categoryImage} />
 
-      <Typo.Title>{deck.name}</Typo.Title>
-      <Typo.Paragraph>{deck.description}</Typo.Paragraph>
+      <Typo.Title fontSize={'24px'}>{deck?.name}</Typo.Title>
+      <Typo.Paragraph fontSize={'14px'}>{deck?.description}</Typo.Paragraph>
 
-      <Typo.SubTitle color={({ theme }) => theme.dark}>{deck.price} €</Typo.SubTitle>
+      <Container.BaseRow padding={'12px 0'}>
+        <Typo.Paragraph fontSize={'16px'}>Nombre de cartes : {deck?.cardCount}</Typo.Paragraph>
+
+        <Typo.SubTitle color={({ theme }) => theme.darkPurple}>{deck?.price} €</Typo.SubTitle>
+      </Container.BaseRow>
 
       <ContainerButton.ClassicButton
         backgroundColor={({ theme }) => (loading ? theme.black : theme.lightPurple)}

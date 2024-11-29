@@ -4,7 +4,7 @@ import colors from '../../../utils/Colors';
 
 const StyledTitle = styled.Text`
   font-family: 'Poppins-Bold';
-  font-size: 32px;
+  font-size: ${({ fontSize }) => fontSize || '32px'};
   color: ${({ color, theme }) => color || theme.darkPurple};
 `;
 

@@ -15,8 +15,6 @@ const StyledDropdown = styled(Dropdown)`
 const DropdownComponent = ({ dropdownData, dropdownValue, setDropDownvalue }) => {
   const [isFocus, setIsFocus] = useState(false);
 
-  console.log(dropdownData);
-
   const formattedData = dropdownData.map((element) => {
     return {
       label: element.name,

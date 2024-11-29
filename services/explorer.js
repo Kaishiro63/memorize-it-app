@@ -8,7 +8,13 @@ export const explorerApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
+    getExplorerDecksId: builder.query({
+      query: ({ deckId } = {}) => ({
+        url: `/explorer/decks/${deckId}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useLazyGetExplorerDecksByCategoryQuery } = explorerApi;
+export const { useLazyGetExplorerDecksByCategoryQuery, useGetExplorerDecksIdQuery } = explorerApi;

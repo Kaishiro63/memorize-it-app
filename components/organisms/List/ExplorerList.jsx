@@ -15,7 +15,7 @@ const ExplorerList = ({ data }) => {
       numColumns={2}
       renderItem={({ item }) => (
         <Element.Explorer
-          onPress={() => navigation.navigate('Detail', { deck: item })}
+          onPress={() => navigation.navigate('Detail', { deckId: item.id })}
           title={item.name}
           categoryId={item.categoryId}
           price={item.price}

@@ -19,7 +19,7 @@ const CategoryList = ({ data, onPressCategory, activeCategoryId }) => {
             name={item.name}
             id={item.id}
             icon={item.iconName}
-            iconFamily={item.iconFamily}
+            iconFamily={item.iconLibrary}
           />
         );
       }}

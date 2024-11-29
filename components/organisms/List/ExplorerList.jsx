@@ -3,7 +3,9 @@ import styled from 'styled-components/native';
 import { Element } from '../../molecules';
 import { useNavigation } from '@react-navigation/native';
 
-const StyledExplorerList = styled.FlatList``;
+const StyledExplorerList = styled.FlatList`
+  height: 100%;
+`;
 
 const ExplorerList = ({ data }) => {
   const navigation = useNavigation();

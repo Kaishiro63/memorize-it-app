@@ -24,7 +24,7 @@ const MainStack = () => {
               icon = { name: focused ? 'book' : 'book-outline', family: 'Ionicons' };
               break;
             case 'ProfilStack':
-              icon = { name: focused ? 'profil' : 'profil', family: 'Ionicons' };
+              icon = { name: focused ? 'person' : 'person-outline', family: 'Ionicons' };
               break;
             default:
               icon = 'home';
@@ -55,7 +55,7 @@ const MainStack = () => {
       <Tabs.Screen
         name='ProfilStack'
         component={ProfilStack}
-        options={{ headerShown: false, title: 'Explorer' }}
+        options={{ headerShown: false, title: 'Profil' }}
       />
     </Tabs.Navigator>
   );

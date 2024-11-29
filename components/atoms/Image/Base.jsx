@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const StyledBase = styled.Image`
-  width: 16px;
-  height: 16px;
+  width: 96px;
+  height: 96px;
 `;
 
 const Base = (props) => {

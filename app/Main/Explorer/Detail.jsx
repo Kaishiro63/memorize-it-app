@@ -3,7 +3,6 @@ import { useStripe } from '@stripe/stripe-react-native';
 import { useCheckoutDeckMutation } from '../../../services/stripe';
 import { useGetExplorerDecksIdQuery } from '../../../services/explorer';
 import { Container, Typo, Image, ContainerButton } from '../../../components/atoms';
-import colors from '../../../utils/Colors';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -79,7 +78,12 @@ const Detail = ({ route, navigation }) => {
     navigation.setOptions({
       headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name='arrow-back' size={24} color={colors.primary} style={{ marginLeft: 10 }} />
+          <Ionicons
+            name='arrow-back'
+            size={24}
+            color={({ theme }) => theme.black}
+            style={{ marginLeft: 10 }}
+          />
         </TouchableOpacity>
       ),
     });

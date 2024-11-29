@@ -1,5 +1,4 @@
 import { Typo, Container, ContainerButton } from '../../components/atoms';
-import colors from '../../utils/Colors';
 import { useEffect } from 'react';
 import { useLoginMutation } from '../../services/user';
 import { useDispatch } from 'react-redux';
@@ -26,13 +25,13 @@ export default function Login({ navigation }) {
         onPress={() => pressLogin()}
         backgroundColor={({ theme }) => theme.lightPurple}
       >
-        <Typo.SubTitle>Connexion VIP</Typo.SubTitle>
+        <Typo.SubTitle color={({ theme }) => theme.white}>Connexion</Typo.SubTitle>
       </ContainerButton.ClassicButton>
       <ContainerButton.ClassicButton
-        onPress={() => promptAsync()}
+        onPress={() => pressRegister()}
         backgroundColor={({ theme }) => theme.lightPurple}
       >
-        <Typo.SubTitle>Google Auth</Typo.SubTitle>
+        <Typo.SubTitle color={({ theme }) => theme.white}>Inscription</Typo.SubTitle>
       </ContainerButton.ClassicButton>
     </Container.ScreenBase>
   );

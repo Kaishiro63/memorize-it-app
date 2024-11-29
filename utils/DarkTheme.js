@@ -7,4 +7,5 @@ export default {
   beige: '#BFA3A0',
   orange: '#FF7043',
   black: '#121212',
+  red: '#FF0000',
 };

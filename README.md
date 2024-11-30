@@ -89,7 +89,7 @@ Voici quelques aperçus de l'application :
 
 | ![Écran de connexion](assets/images/screen-connexion.png) | ![Bibliothèque de decks](assets/images/screen-explorer.png) |
 |:---------------------------------------------------------:|:----------------------------------------------------------:|
-| *Écran de connexion sécurisée.*                          | *Achetez des decks prêts à l'emploi directement dans l'application.* |
+| *Écran de connexion*                                      | *Bibliothèque de decks* |
 
 
 ---

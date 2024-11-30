@@ -87,16 +87,9 @@ Extrait du `package.json` :
 
 Voici quelques aperçus de l'application :
 
-<div style="display: flex; justify-content: space-around; align-items: center;">
-   <div>
-      *Écran de connexion sécurisée.*
-      <img src="assets/images/screen-connexion.png" alt="Écran de connexion" width="200" />
-   </div>
-   <div>
-      *Achetez des decks prêts à l'emploi directement dans l'application.*
-      <img src="assets/images/screen-explorer.png" alt="Écran de bibliothèque de decks" width="200" />
-   </div>
-</div>
+| ![Écran de connexion](assets/images/screen-connexion.png) | ![Bibliothèque de decks](assets/images/screen-explorer.png) |
+|:---------------------------------------------------------:|:----------------------------------------------------------:|
+| *Écran de connexion sécurisée.*                          | *Achetez des decks prêts à l'emploi directement dans l'application.* |
 
 
 ---

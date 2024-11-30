@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import colors from '../../../utils/Colors';
 
 const StyledInput = styled.TextInput`
   font-family: 'Poppins-Regular';
@@ -12,10 +11,11 @@ const StyledInput = styled.TextInput`
   padding: 8px;
   height: 45px;
   width: 100%;
+  ${({ containerStyle }) => containerStyle}
 `;
 
-const TextInput = (props) => {
-  return <StyledInput {...props}></StyledInput>;
+const TextInput = ({ containerStyle, ...props }) => {
+  return <StyledInput containerStyle={containerStyle} {...props}></StyledInput>;
 };
 
 export default TextInput;

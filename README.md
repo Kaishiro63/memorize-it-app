@@ -12,7 +12,7 @@ Permettre à tous d'améliorer leur mémoire et leurs connaissances en utilisant
 ---
 
 ## ✨ Fonctionnalités principales
-- **Création et gestion de comptes utilisateurs** avec authentification sécurisée par OAuth.
+- **Création et gestion de comptes utilisateurs** avec authentification sécurisée par token.
 - **Création de decks personnalisés** pour répondre à vos besoins d'apprentissage spécifiques.
 - **Bibliothèque publique de decks** prêts à l'emploi, disponibles à l'achat.
 - **Mode interactif** pour jouer avec vos decks, en répondant aux questions des cartes.
@@ -23,7 +23,7 @@ Permettre à tous d'améliorer leur mémoire et leurs connaissances en utilisant
 ## 🚀 Installation
 
 ### Pré-requis
-1. **Node.js** et **npm** doivent être installés sur votre machine.
+1. **Node.js version 18** et **npm** doivent être installés sur votre machine.
 2. **Expo CLI** pour exécuter le projet.
 
 ### Étapes
@@ -36,7 +36,10 @@ Permettre à tous d'améliorer leur mémoire et leurs connaissances en utilisant
    ```bash
    npm install
    ```
-3. Lancez l'application :  
+3. Ajoutez un fichier `.env` à la racine du projet avec le contenu suivant :  
+   ```env
+   EXPO_PUBLIC_API_URL=https://memorize-it-api.online 
+4. Lancez l'application :  
    ```bash
    npm start
    ```
@@ -59,7 +62,7 @@ Voici un aperçu des principales technologies utilisées pour développer **Memo
 - **Expo** : pour la gestion et l'exécution du projet.
 - **Redux Toolkit** : pour la gestion d'état.
 - **Styled Components** : pour le stylisme dynamique.
-- **OAuth** : pour l'authentification sécurisée.
+- **OAT** : pour l'authentification sécurisée.
 - **Stripe** : pour les paiements dans la boutique.
 
 ### 📄 Dépendances principales

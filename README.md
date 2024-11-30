@@ -47,7 +47,7 @@ Permettre à tous d'améliorer leur mémoire et leurs connaissances en utilisant
 1. **Créer un compte utilisateur** dans l'application.
 2. Accédez à l'interface pour :
    - Créer des decks personnalisés.
-   - Explorer et acheter des decks dans la **boutique**.
+   - Explorer et acheter des decks dans la **boutique** *(utilisez le code de carte bleue **4242 4242 4242 4242** pour effectuer des achats)*.
 3. Lancez une session et commencez à répondre aux questions !
 
 ---

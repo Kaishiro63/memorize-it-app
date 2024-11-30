@@ -5,11 +5,10 @@ import { useGetAllCategoriesQuery } from '../../../services/deck';
 import { useLazyGetExplorerDecksByCategoryQuery } from '../../../services/explorer';
 import { ExplorerList } from '../../../components/organisms/List';
 
-const List = ({ route }) => {
+const List = () => {
   const [selectedCategory, setSelectedCategory] = useState(undefined);
   const { data } = useGetAllCategoriesQuery();
-  const [trigger, { data: explorerDecks, error, isLoading, isSuccess }] =
-    useLazyGetExplorerDecksByCategoryQuery();
+  const [trigger, { data: explorerDecks }] = useLazyGetExplorerDecksByCategoryQuery();
 
   useEffect(() => {
     trigger(selectedCategory && { categoryId: selectedCategory });

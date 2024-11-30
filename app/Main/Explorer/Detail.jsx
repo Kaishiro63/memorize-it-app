@@ -33,6 +33,8 @@ const Detail = ({ route, navigation }) => {
   const [checkoutDeck, { data, isSuccess }] = useCheckoutDeckMutation();
   const [loading, setLoading] = useState(false);
 
+  console.log('deck', JSON.stringify(deck?.isAlreadyBuy, null, 2));
+
   useEffect(() => {
     if (isSuccess) {
       handleOpenPayement();
@@ -92,25 +94,34 @@ const Detail = ({ route, navigation }) => {
   return (
     <Container.ScreenBase>
       <Image.ImageExplorer source={categoryImage} />
-
       <Typo.Title fontSize={'24px'}>{deck?.name}</Typo.Title>
       <Typo.Paragraph fontSize={'14px'}>{deck?.description}</Typo.Paragraph>
-
       <Container.BaseRow padding={'12px 0'}>
         <Typo.Paragraph fontSize={'16px'}>Nombre de cartes : {deck?.cardCount}</Typo.Paragraph>
 
         <Typo.SubTitle color={({ theme }) => theme.darkPurple}>{deck?.price} €</Typo.SubTitle>
       </Container.BaseRow>
-
-      <ContainerButton.ClassicButton
-        backgroundColor={({ theme }) => (loading ? theme.black : theme.lightPurple)}
-        onPress={handlePurchase}
-        disabled={loading}
-      >
-        <Typo.SubTitle color={({ theme }) => theme.white}>
-          {loading ? 'Traitement...' : 'Acheter'}
-        </Typo.SubTitle>
-      </ContainerButton.ClassicButton>
+      {deck?.isAlreadyBuy ? (
+        <ContainerButton.ClassicButton
+          backgroundColor={({ theme }) => theme.lightPurple}
+          onPress={() =>
+            navigation.navigate('HomeStack', { screen: 'Game', params: { id: deck.id } })
+          }
+        >
+          <Typo.SubTitle color={({ theme }) => theme.white}>Voir le deck</Typo.SubTitle>
+        </ContainerButton.ClassicButton>
+      ) : (
+        <ContainerButton.ClassicButton
+          backgroundColor={({ theme }) => (loading ? theme.black : theme.lightPurple)}
+          onPress={handlePurchase}
+          disabled={loading}
+        >
+          <Typo.SubTitle color={({ theme }) => theme.white}>
+            {loading ? 'Traitement...' : 'Acheter'}
+          </Typo.SubTitle>
+        </ContainerButton.ClassicButton>
+      )}
+      ¢
     </Container.ScreenBase>
   );
 };

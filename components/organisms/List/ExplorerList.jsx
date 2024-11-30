@@ -19,6 +19,7 @@ const ExplorerList = ({ data }) => {
         <Element.Explorer
           onPress={() => navigation.navigate('Detail', { deckId: item.id })}
           title={item.name}
+          isAlreadyBuy={item.isAlreadyBuy}
           categoryId={item.categoryId}
           price={item.price}
           deckFamilyIconName={item.iconCategoryFamily}

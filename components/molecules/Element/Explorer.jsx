@@ -38,9 +38,8 @@ const PriceContainer = styled.View`
   border-radius: 8px;
 `;
 
-const Explorer = ({ title, description, price, onPress, categoryId, ...props }) => {
+const Explorer = ({ title, description, price, onPress, isAlreadyBuy, categoryId, ...props }) => {
   const categoryImage = categoryImages[categoryId];
-
   return (
     <StyledExplorer onPress={onPress} {...props}>
       <Image.ImageExplorer source={categoryImage} />
@@ -50,7 +49,7 @@ const Explorer = ({ title, description, price, onPress, categoryId, ...props }) 
       </Container.Base>
       <PriceContainer>
         <Typo.SubTitle textAlign={'right'} color={({ theme }) => theme.white}>
-          {price} €
+          {isAlreadyBuy ? 'Déjà acheté' : `${price} €`}
         </Typo.SubTitle>
       </PriceContainer>
     </StyledExplorer>

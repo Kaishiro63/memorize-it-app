@@ -27,14 +27,15 @@ export const userApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
-    register: builder.query({
-      query: () => ({
+    register: builder.mutation({
+      query: ({ fullName, email, password }) => ({
         url: '/auth/register',
-        method: 'GET',
+        method: 'POST',
+        body: { fullName, email, password },
       }),
     }),
   }),
 });
 
-export const { useLoginMutation, useBaseQuery, useLogoutMutation, useMeQuery, useRegisterQuery } =
+export const { useLoginMutation, useBaseQuery, useLogoutMutation, useMeQuery, useRegisterMutation } =
   userApi;

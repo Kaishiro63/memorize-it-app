@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { MemoryCard } from '../../../components/molecules/Element';
 import { useGetRandomCardByDeckIdQuery } from '../../../services/card';
 import { Container, ContainerButton, Typo } from '../../../components/atoms';
-import colors from '../../../utils/Colors';
 
 const Game = ({ navigation, route }) => {
-  const { data, error, isLoading } = useGetRandomCardByDeckIdQuery({ deckId: route.params.id });
+  const { data } = useGetRandomCardByDeckIdQuery({ deckId: route.params.id });
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

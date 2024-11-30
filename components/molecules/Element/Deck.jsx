@@ -36,7 +36,9 @@ const Deck = ({
           isPaddingIcon={true}
         />
         <Container.Base>
-          <Typo.SubTitle>{title}</Typo.SubTitle>
+          <Container.Base containerStyle={`max-width: 80%`}>
+            <Typo.SubTitle numberOfLines={1}>{title}</Typo.SubTitle>
+          </Container.Base>
           <Typo.Paragraph>Nombre de carte : {numberOfCards}</Typo.Paragraph>
         </Container.Base>
       </Container.BaseRow>

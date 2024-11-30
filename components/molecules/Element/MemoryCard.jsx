@@ -71,7 +71,9 @@ const MemoryCard = ({ card, onSwipeComplete }) => {
       <GestureDetector gesture={gesture}>
         <StyledMemoryCard style={animatedStyle}>
           <Container.Card>
-            <Typo.SubTitle>{isFlipped ? card.answer : card.question}</Typo.SubTitle>
+            <Typo.SubTitle textAlign={'center'}>
+              {isFlipped ? card.answer : card.question}
+            </Typo.SubTitle>
           </Container.Card>
         </StyledMemoryCard>
       </GestureDetector>

@@ -23,11 +23,7 @@ const categoryImages = {
 };
 
 const Detail = ({ route, navigation }) => {
-  const {
-    data: deck,
-    error,
-    isLoading,
-  } = useGetExplorerDecksIdQuery({ deckId: route.params.deckId });
+  const { data: deck, refetch } = useGetExplorerDecksIdQuery({ deckId: route.params.deckId });
   const categoryImage = categoryImages[deck?.category.id];
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [checkoutDeck, { data, isSuccess }] = useCheckoutDeckMutation();
@@ -67,6 +63,7 @@ const Detail = ({ route, navigation }) => {
       if (paymentResponse.error) {
         console.error('Erreur de paiement:', paymentResponse.error);
       } else {
+        refetch();
         navigation.navigate('Home');
       }
     } catch (error) {
@@ -121,7 +118,6 @@ const Detail = ({ route, navigation }) => {
           </Typo.SubTitle>
         </ContainerButton.ClassicButton>
       )}
-      ¢
     </Container.ScreenBase>
   );
 };

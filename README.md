@@ -87,10 +87,10 @@ Extrait du `package.json` :
 
 Voici quelques aperçus de l'application :
 
-![Écran de connexion](assets/images/screen-connexion.png)
+<img src="assets/images/screen-connexion.png" alt="Écran de connexion" width="400" />
 *Écran de connexion sécurisée.*
 
-![Bibliothèque de decks](assets/images/screen-explorer.png)
+<img src="assets/images/screen-explorer.png" alt="Écran de bibliothèque de decks" width="400" />
 *Achetez des decks prêts à l'emploi directement dans l'application.*
 
 ---

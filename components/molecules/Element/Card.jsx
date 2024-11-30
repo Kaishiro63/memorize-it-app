@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Typo } from '../../atoms';
-import colors from '../../../utils/Colors';
 
 const StyledCard = styled.TouchableOpacity`
   height: 150px;
@@ -10,14 +9,18 @@ const StyledCard = styled.TouchableOpacity`
   padding: 8px;
   margin: 9px;
   background-color: ${({ theme }) => theme.white};
+  justify-content: space-between;
 `;
 
-const Card = ({ title, onPressEditable, ...props }) => {
+const Card = ({ title, onPressEditable, onDeleteCard, ...props }) => {
   return (
     <StyledCard {...props}>
       <Typo.SubTitle textAlign={'center'} fontSize={'14px'}>
         {title}
       </Typo.SubTitle>
+      <Typo.Paragraph textAlign={'center'} color={({ theme }) => theme.red} onPress={onDeleteCard}>
+        Supprimer
+      </Typo.Paragraph>
     </StyledCard>
   );
 };

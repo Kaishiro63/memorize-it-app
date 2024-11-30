@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Element } from '../../molecules';
 import { Native } from '../../atoms';
+import { Element } from '../../molecules';
 
 const StyledEditCardList = styled.FlatList`
   width: 100%;
 `;
 
-const EditCardList = ({ onPressCard, onRefresh, isRefreshing, data }) => {
+const EditCardList = ({ onPressCard, onRefresh, isRefreshing, data, onDeleteCard }) => {
   return (
     <StyledEditCardList
       refreshControl={
@@ -21,6 +21,9 @@ const EditCardList = ({ onPressCard, onRefresh, isRefreshing, data }) => {
           onPress={() => onPressCard(item.id)}
           title={item.question}
           numberOfCards={item.cardCount}
+          onDeleteCard={() => {
+            onDeleteCard(item.id);
+          }}
         />
       )}
       keyExtractor={(item) => item.id}

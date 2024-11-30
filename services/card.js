@@ -14,6 +14,13 @@ export const cardApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
+    updateCard: builder.mutation({
+      query: ({ id, question, response }) => ({
+        url: `/cards/modify`,
+        method: 'POST',
+        body: { id, question: question, answer: response },
+      }),
+    }),
     createCard: builder.mutation({
       query: ({ question, response, deckId }) => ({
         url: `/cards`,
@@ -25,8 +32,20 @@ export const cardApi = api.injectEndpoints({
         },
       }),
     }),
+    deleteCard: builder.mutation({
+      query: ({ cardId }) => ({
+        url: `/cards/delete`,
+        method: 'DELETE',
+        body: { cardId },
+      }),
+    }),
   }),
 });
 
-export const { useGetAllCardByDeckIdQuery, useGetRandomCardByDeckIdQuery, useCreateCardMutation } =
-  cardApi;
+export const {
+  useGetAllCardByDeckIdQuery,
+  useGetRandomCardByDeckIdQuery,
+  useCreateCardMutation,
+  useUpdateCardMutation,
+  useDeleteCardMutation,
+} = cardApi;
